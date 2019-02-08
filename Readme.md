@@ -27,6 +27,10 @@ npm install babel-core babel-loader babel-preset-env babel-preset-react babel-pr
 
 
 
+4. Install react router.
+ npm install react-router react-router-dom
+
+
 
 
 
