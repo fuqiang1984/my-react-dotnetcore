@@ -32,6 +32,9 @@ export default function CodeCampMenu() {
                 <li>
                     <Link to="/speakers">Speakers</Link>
                 </li>
+                <li>
+                    <Link to="/mytest123">My test</Link>
+                </li>
 
                 <li className="social-icon">
                     <a href="">
