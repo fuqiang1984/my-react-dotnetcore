@@ -46,7 +46,21 @@ Then use command 'npm run dev:build-server' to build the server.js.
 
 Then use command 'npm run dev:server' to run the server.
 
-8.
+8.npm  install npm-run-all rimraf cpx --save.  (npm-run-all One script, built and deploy,rimraf clean wwwroot directory in asp.net core. cpx copy newly built files to wwwroot)
+
+You can paste the script to package.json
+
+In scripts in package.json:
+
+"prod:bundlefordeploy": "webpack --config webpack.client.js",
+    "prod:cleanwwwroot": "rimraf ../WebApp/wwwroot",
+    "prod:copytowwwroot": "cpx 'public/**/*' ../WebApp/wwwroot",
+    "prod:deploy": "npm-run-all --serial prod:bundlefordeploy prod:cleanwwwroot prod:copytowwwroot"
+
+
+
+    Apart from this, you need to compress the result bundle.  Search webpack and uglify to learn this.
+
 
 
 

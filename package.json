@@ -10,7 +10,6 @@
     "start:dev": "webpack-dev-server --hot",
     "dev:server": "node build/serverbundle.js",
     "dev:build-server": "webpack --config webpack.server.js"
-    
   },
   "keywords": [],
   "author": "",
@@ -26,12 +25,15 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
+    "cpx": "^1.5.0",
     "express": "^4.16.4",
     "lodash": "^4.17.11",
+    "npm-run-all": "^4.1.5",
     "react": "^16.8.1",
     "react-dom": "^16.8.1",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
+    "rimraf": "^2.6.3",
     "webpack-merge": "^4.2.1",
     "webpack-node-externals": "^1.7.2"
   }
