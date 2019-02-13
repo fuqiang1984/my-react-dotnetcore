@@ -15,7 +15,7 @@ export default function CodeCampMenu() {
                     className="header__user__icon"
                     alt="User Icon"
                 />
-                <span className="header__user__hello">Hello, stranger</span>
+                <span className="header__user__hello">Hello, john fu!</span>
                 <Link to="/login">Login</Link>
             </div>
 
@@ -30,7 +30,7 @@ export default function CodeCampMenu() {
                 </li>
 
                 <li>
-                    <Link to="/speakers">Speakers</Link>
+                    <Link to="/speakers">Speakers1234444</Link>
                 </li>
                 <li>
                     <Link to="/mytest123">My test</Link>

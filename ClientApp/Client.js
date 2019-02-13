@@ -4,11 +4,15 @@ import FullPage from "./Components/common/FullPage";
 
 import { browserHistory } from 'react-router';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { Provider } from 'react-redux';
+import configureStore from "../redux/configureStore";
 
+const store = configureStore(window.__STATE__);
 
 ReactDOM.hydrate(
+	<Provider store={store}>
     <Router history={browserHistory}>
         <FullPage/>
-    </Router>,
+    </Router></Provider>,
     document.getElementById("app")
 );
