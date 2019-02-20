@@ -25,6 +25,11 @@ let middleware = [
     axiosMiddleware(axios.create({baseURL:restUrl}))
 ];
 
+if (!production) {
+    middleware.push(require('redux-immutable-state-invariant').default());
+    console.log('added redux-immutable-state-invariant');
+}
+
 //if (!production) {
   //  middleware.push(require('redux-immutable-state-invariant').default());
    // console.log('added redux-immutable-state-invariant');
@@ -36,10 +41,10 @@ export default function configureStore(initialState = {}) {
         // Specify name here, actionsBlacklist, actionsCreators and other options if needed
     });
 
-    const client = axios.create({ //all axios can be used, shown in axios documentation
-        baseURL: restUrl,
+    //const client = axios.create({ //all axios can be used, shown in axios documentation
+      //  baseURL: restUrl,
         //responseType: 'json'
-    });
+    //});
 
     //const restUrl = 'http://localhost:4000/rest';
 
