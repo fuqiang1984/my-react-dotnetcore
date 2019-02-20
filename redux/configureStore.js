@@ -11,6 +11,9 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 const production = process.env.NODE_ENV &&
     process.env.NODE_ENV === "production";
 
+if (!production) {
+    require('dotenv').config();
+}
 
 
 const restUrl = production ?
@@ -31,6 +34,11 @@ export default function configureStore(initialState = {}) {
 
     const composeEnhancers = composeWithDevTools({
         // Specify name here, actionsBlacklist, actionsCreators and other options if needed
+    });
+
+    const client = axios.create({ //all axios can be used, shown in axios documentation
+        baseURL: restUrl,
+        //responseType: 'json'
     });
 
     //const restUrl = 'http://localhost:4000/rest';

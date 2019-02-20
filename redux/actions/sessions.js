@@ -13,7 +13,7 @@ export function sessionsFetchData() {
         type: SESSION_LOAD,
         payload: {
             request:{
-                url:'http://localhost:4000/rest/sessions'
+                url:'sessions'
             }
         }
     }

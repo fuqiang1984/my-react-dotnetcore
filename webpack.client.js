@@ -6,6 +6,7 @@ const PUBLIC_DIR = path.resolve(__dirname,'public');
 
 const merge = require('webpack-merge');
 const baseConfig = require('./webpack.base.js');
+const Dotenv = require('dotenv-webpack');
 
 const config = {
 
@@ -19,6 +20,14 @@ const config = {
     output: {
         path: PUBLIC_DIR,
         filename: 'clientbundle.js'
+    },
+    plugins: [
+        new Dotenv()
+    ],
+
+    node: {
+        module: 'empty',
+        fs: 'empty'
     }
 
 };
