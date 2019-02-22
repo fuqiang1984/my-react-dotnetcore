@@ -11,6 +11,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 const production = process.env.NODE_ENV &&
     process.env.NODE_ENV === "production";
 
+
 if (!production) {
     require('dotenv').config();   //for environment value
 }
@@ -19,7 +20,7 @@ if (!production) {
 const restUrl = production ?
     process.env.PROD_RESTURL :
     process.env.JSONSERVER_RESTURL;
-
+console.log(restUrl);
 let middleware = [
     thunk,
     axiosMiddleware(axios.create({baseURL:restUrl}))
