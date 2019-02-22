@@ -10,7 +10,12 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 
 const production = process.env.NODE_ENV &&
     process.env.NODE_ENV === "production";
-console.log(process.env.NODE_ENV);
+
+
+if (!production) {
+    require('dotenv').config();
+}
+
 
 const restUrl = production ?
     process.env.PROD_RESTURL :
@@ -20,6 +25,11 @@ let middleware = [
     thunk,
     axiosMiddleware(axios.create({baseURL:restUrl}))
 ];
+
+if (!production) {
+    middleware.push(require('redux-immutable-state-invariant').default());
+    console.log('added redux-immutable-state-invariant');
+}
 
 //if (!production) {
   //  middleware.push(require('redux-immutable-state-invariant').default());
@@ -31,6 +41,11 @@ export default function configureStore(initialState = {}) {
     const composeEnhancers = composeWithDevTools({
         // Specify name here, actionsBlacklist, actionsCreators and other options if needed
     });
+
+    //const client = axios.create({ //all axios can be used, shown in axios documentation
+      //  baseURL: restUrl,
+        //responseType: 'json'
+    //});
 
     //const restUrl = 'http://localhost:4000/rest';
 
