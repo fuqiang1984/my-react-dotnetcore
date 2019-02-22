@@ -137,6 +137,12 @@ npm install redux react-redux redux-axios-middleware react-router-redux redux-th
 
 
 
+ Integrate survey
+ 
+ npm install prop-types
+
+
+
 
 
 
