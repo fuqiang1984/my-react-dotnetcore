@@ -29,6 +29,7 @@ export function sessions(state = {
         // return newState;
 
         // THIS WORKS
+        //qfu so complex what mean?
         return {
             ...state,
             data: state.data.map((rec) => {
@@ -56,7 +57,7 @@ export function sessions(state = {
             return Object.assign({}, state, {
                 isLoading: false,
                 hasErrored: true,
-                errorMessage: action.error.message
+                errorMessage: action.error.message //where is this qfu
             });
         }
 
