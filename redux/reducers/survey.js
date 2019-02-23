@@ -1,20 +1,20 @@
-import {SPEAKER_LOAD, SPEAKER_LOAD_FAIL, SPEAKER_LOAD_SUCCESS} from "../actions/speakers";
+import {SURVEY_LOAD, SURVEY_LOAD_FAIL, SURVEY_LOAD_SUCCESS} from "../actions/survey";
 
-export function speakers(state = {
-    data: [],
-    isLoading: true,
-    hasErrored: false,
-    errorMessage: ""
-}, action) {
+export function survey(state = {
+      isLoading: true,
+      hasErrored: false,
+      data: [],
+      errorMessage: ""
+    }, action) {
     switch (action.type) {
 
-        case SPEAKER_LOAD: {
+        case SURVEY_LOAD: {
             return Object.assign({}, state, {
                 isLoading: true,
                 hasErrored: false
             });
         }
-        case SPEAKER_LOAD_SUCCESS: {
+        case SURVEY_LOAD_SUCCESS: {
             return Object.assign({}, state, {
                 data: action.payload.data,
                 isLoading: false,
@@ -22,7 +22,7 @@ export function speakers(state = {
             });
         }
 
-        case SPEAKER_LOAD_FAIL: {
+        case SURVEY_LOAD_FAIL: {
             return Object.assign({}, state, {
                 isLoading: false,
                 hasErrored: true,

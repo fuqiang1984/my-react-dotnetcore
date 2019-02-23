@@ -1,31 +1,31 @@
 import React, { Component } from 'react';
-import quizQuestions from './quizQuestions';
+import PropTypes from 'prop-types';
+//import quizQuestions from './quizQuestions';
 import Quiz from './Quiz';
 import Result from './Result';
+import { connect } from 'react-redux';
+import { surveyFetchData } from ".././../../redux/actions/survey";
+
+
 
 
 class Survey extends Component {
+
+
   constructor(props) {
     super(props);
 
     this.state = {
-      counter: 0,
-      questionId: 1,
-      question: '',
-      answerOptions: [],
-      answer: '',
-      answersCount: {
-        Nintendo: 0,
-        Microsoft: 0,
-        Sony: 0
-      },
-      result: ''
+      isLoading: true,
+      appData: []
     };
 
-    this.handleAnswerSelected = this.handleAnswerSelected.bind(this);
+    //this.handleAnswerSelected = this.handleAnswerSelected.bind(this);
   }
 
   componentWillMount() {
+    this.props.surveyFetchData();
+    /*
     const shuffledAnswerOptions = quizQuestions.map(question =>
       this.shuffleArray(question.answers)
     );
@@ -33,6 +33,7 @@ class Survey extends Component {
       question: quizQuestions[0].question,
       answerOptions: shuffledAnswerOptions[0]
     });
+    */
   }
 
   shuffleArray(array) {
@@ -107,6 +108,7 @@ class Survey extends Component {
 
   renderQuiz() {
     return (
+      <div className="container-main speakers">
       <Quiz
         answer={this.state.answer}
         answerOptions={this.state.answerOptions}
@@ -115,11 +117,12 @@ class Survey extends Component {
         questionTotal={quizQuestions.length}
         onAnswerSelected={this.handleAnswerSelected}
       />
+      </div>
     );
   }
 
   renderResult() {
-    return <Result quizResult={this.state.result} />;
+    return <div className="container-main speakers"><Result quizResult={this.state.result} /></div>;
   }
 
   render() {
@@ -131,7 +134,22 @@ class Survey extends Component {
   }
 }
 
-export default Survey;
+Survey.propTypes = {};
+Survey.defaultProps = {};
+
+const mapStateToProps = (state) => {
+
+    return {
+        quizQuestions: state.quizQuestions.data,
+        hasErrored: state.quizQuestions.hasErrored,
+        isLoading: state.quizQuestions.isLoading,
+        errorMessage: state.quizQuestions.errorMessage
+    };
+};
+
+export default connect(mapStateToProps,
+    { surveyFetchData })(Survey)
+
 
 
 

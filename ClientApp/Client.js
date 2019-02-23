@@ -9,7 +9,7 @@ import configureStore from "../redux/configureStore";
 
 const store = configureStore(window.__STATE__);
 
-ReactDOM.hydrate(
+ReactDOM.render(
 	<Provider store={store}>
     <Router history={browserHistory}>
         <FullPage/>
