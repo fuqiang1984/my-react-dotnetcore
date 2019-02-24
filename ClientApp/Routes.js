@@ -5,9 +5,11 @@ import Home from "./Components/home/Home";
 import Speakers from "./Components/speakers/Speakers";
 
 import Surveys from "./Components/surveys/Surveys";
+import Advancedsurvey from "./Components/advancedsurvey/Advancedsurvey";
 import Mytest from "./Components/mytest/Mytest";
 import Login from "./Components/common/Login";
 import RouteNotFound from "./RouteNotFound";
+
 
 
 
@@ -30,6 +32,7 @@ class Routes extends Component {
                     <Route exact path="/" component={Home}/>
                     <Route exact path="/speakers" component={Speakers}/>
                     <Route exact path="/surveys" component={Surveys}/>
+                    <Route exact path="/advancedsurvey" component={Advancedsurvey}/>
                     <Route exact path="/login" component={Login}/>
                     <Route exact path="/mytest123" component={Mytest}/>
                     <Route render={() => <RouteNotFound />}></Route>

@@ -39,19 +39,6 @@ class Surveys extends Component {
 
         this.props.surveysFetchData();
       
-
-        // axios.get('/data/speakers.json')
-        //     .then((result)=> {
-        //         this.setState({
-        //             appData: result.data,
-        //             isLoading: false
-        //         });
-        //     })
-        //     .catch(error => {
-        //         if (error.response) {
-        //             console.log(error.responderEnd);
-        //         }
-        //     });
     }
 
     shuffleArray(array) {
