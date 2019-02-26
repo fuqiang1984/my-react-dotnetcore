@@ -17,12 +17,14 @@
     "prod:copytowwwroot": "cpx 'public/**/*' ../smartleader/WebApp/wwwroot",
     "prod:deploy": "npm-run-all --serial prod:bundlefordeploy prod:cleanwwwroot prod:copytowwwroot",
     "jsonserver": "nodemon jsonserver.js",
-    "start": "npm-run-all --parallel start:client jsonserver"
+    "start": "npm-run-all --parallel start:client jsonserver",
+    "build-css": "node-sass-chokidar --source-comments  --include-path ./ClientApp/sass --include-path ./node_modules ClientApp/ -o public/"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "css-loader": "^2.1.0",
     "webpack": "^4.29.3",
     "webpack-cli": "^3.2.3",
     "webpack-dev-server": "^3.1.14"
@@ -59,6 +61,9 @@
     "rimraf": "^2.6.3",
     "survey-react": "^1.0.71",
     "webpack-merge": "^4.2.1",
-    "webpack-node-externals": "^1.7.2"
+    "webpack-node-externals": "^1.7.2",
+    "bootstrap": "4.0.0-alpha.6",
+    "font-awesome": "^4.7.0",
+    "node-sass-chokidar": "0.0.3"
   }
 }
