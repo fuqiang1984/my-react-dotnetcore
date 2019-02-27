@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 export default function CodeCampMenu() {
+    
     return (
         <div>
             <div className="header__open-button-mobile">
