@@ -3,7 +3,7 @@ import { ADVANCEDSURVEY_LOAD,ADVANCEDSURVEY_LOAD_FAIL,ADVANCEDSURVEY_LOAD_SUCCES
     ADVANCEDSURVEY_UPDATE_FAIL,
     ADVANCEDSURVEY_UPDATE_SUCCESS   } from "../actions/advancedsurvey";
 
-import {STATUS_ERROR, STATUS_SAVING} from "../../ClientApp/Components/common/AdvancedsurveyButton";
+//import {STATUS_ERROR, STATUS_SAVING} from "../../ClientApp/Components/common/AdvancedsurveyButton";
 
 
 export function advancedsurvey(state = {
@@ -63,27 +63,31 @@ export function advancedsurvey(state = {
 
         ///////////// ADVANCEDSURVEY_UPDATE* (PUT) /////////////////////////////////////////////////////////////////
         case ADVANCEDSURVEY_UPDATE: {
-            const advancedsurveyIdToUpdate = action.payload.request.data.id;
-            const newInterestLevel = STATUS_SAVING;
+            return Object.assign({}, state, {
+                data: action.payload.data,
+                isLoading: false,
+                hasErrored: false
+            });
+            //const advancedsurveyIdToUpdate = action.payload.request.data.id;
+           // const newInterestLevel = STATUS_SAVING;
 
-            const newState = updateOneAdvancedsurvey(
-                state,advancedsurveyIdToUpdate,newInterestLevel);
-            return newState;
+            //const newState = updateOneAdvancedsurvey(
+               // state,advancedsurveyIdToUpdate,newInterestLevel);
+            //return newState;
         }
         case ADVANCEDSURVEY_UPDATE_SUCCESS: {
-            const advancedsurveyIdToUpdate = action.payload.data.id;
-            const newInterestLevel = action.payload.data.interestLevel;
-            const newState = updateOneAdvancedsurvey(
-                state,advancedsurveyIdToUpdate,newInterestLevel);
-            return newState;
+           return Object.assign({}, state, {
+                data: action.payload.data,
+                isLoading: false,
+                hasErrored: false
+            });
         }
         case ADVANCEDSURVEY_UPDATE_FAIL: {
-            const advancedsurveyIdToUpdate =
-                action.meta.previousAction.payload.request.data.id;
-            const newInterestLevel = STATUS_ERROR;
-            const newState = updateOneAdvancedsurvey(
-                state,advancedsurveyIdToUpdate,newInterestLevel);
-            return newState;
+            return Object.assign({}, state, {
+                data: action.payload.data,
+                isLoading: false,
+                hasErrored: false
+            });
         }
         default:
             return state;

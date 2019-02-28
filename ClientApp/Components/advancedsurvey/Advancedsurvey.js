@@ -3,9 +3,14 @@ import * as Survey from "survey-react";
 
 import { connect } from 'react-redux';
 import { updateAdvancedsurvey } from ".././../../redux/actions/advancedsurvey";
+import { advancedsurveyFetchData } from ".././../../redux/actions/advancedsurvey";
 
 
 class Advancedsurvey extends Component {
+   componentDidMount() {
+        this.props.advancedsurveyFetchData();
+    
+   }
  //Define Survey JSON
  //Here is the simplest Survey with one text question
  json = {
@@ -213,11 +218,13 @@ class Advancedsurvey extends Component {
     ]
   };
 
+ 
+
  //Define a callback methods on survey complete
  onComplete(survey, options) {
   //Write survey results into database
     console.log("Survey results: " + JSON.stringify(survey.data));
-    this.props.updateAdvancedsurvey(survey.data);
+    //this.props.advancedsurveyFetchData();
     
  }
  render() {
@@ -225,7 +232,12 @@ class Advancedsurvey extends Component {
   //You may create survey model outside the render function and use it in your App or component
   //The most model properties are reactive, on their change the component will change UI when needed.
   var model = new Survey.Model(this.json);
-  return (<Survey.Survey model={model} onComplete={this.onComplete}/>);
+
+  return (<Survey.Survey model={model} onComplete={(survey,options)=>{
+        console.log("Survey results: " + JSON.stringify(survey.data));
+        this.props.updateAdvancedsurvey(JSON.stringify(survey.data));
+
+  }}/>);
   /*
   //The alternative way. react Survey component will create survey model internally
   return (<Survey.Survey json={this.json} onComplete={this.onComplete}/>);
@@ -241,10 +253,13 @@ class Advancedsurvey extends Component {
 } 
 
 const mapStateToProps = (state) => {
-  return {
-      
-  };
+    return {
+        speakers: state.advancedsurvey.data,       // to match this.props.speakers:reducers.state.speakers.data
+        hasErrored: state.advancedsurvey.hasErrored,
+        isLoading: state.advancedsurvey.isLoading,
+        errorMessage: state.advancedsurvey.errorMessage
+    };
 };
 
 export default connect(mapStateToProps,
-  {updateAdvancedsurvey })(Advancedsurvey);
+    {advancedsurveyFetchData,updateAdvancedsurvey })(Advancedsurvey);

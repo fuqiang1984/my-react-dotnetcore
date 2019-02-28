@@ -26,7 +26,7 @@ export function updateAdvancedsurvey(advancedsurveyRec) {
         type: ADVANCEDSURVEY_UPDATE,
         payload: {
             request: {
-                method: 'POST', // UPDATE RECORD
+                method: 'PUT', // UPDATE RECORD
                 url: 'advancedsurvey/',
                 data: {
                     ...advancedsurveyRec

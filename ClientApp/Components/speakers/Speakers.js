@@ -78,7 +78,7 @@ Speakers.defaultProps = {};
 const mapStateToProps = (state) => {
 
     return {
-        speakers: state.speakers.data,
+        speakers: state.speakers.data,       // to match this.props.speakers:reducers.state.speakers.data
         hasErrored: state.speakers.hasErrored,
         isLoading: state.speakers.isLoading,
         errorMessage: state.speakers.errorMessage
