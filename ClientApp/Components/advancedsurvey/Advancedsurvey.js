@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import * as Survey from "survey-react";
 
+import { connect } from 'react-redux';
+import { updateAdvancedsurvey } from ".././../../redux/actions/advancedsurvey";
+
 
 class Advancedsurvey extends Component {
  //Define Survey JSON
@@ -213,7 +216,9 @@ class Advancedsurvey extends Component {
  //Define a callback methods on survey complete
  onComplete(survey, options) {
   //Write survey results into database
-  console.log("Survey results: " + JSON.stringify(survey.data));
+    console.log("Survey results: " + JSON.stringify(survey.data));
+    this.props.updateAdvancedsurvey(survey.data);
+    
  }
  render() {
   //Create the model and pass it into react Survey component
@@ -235,4 +240,11 @@ class Advancedsurvey extends Component {
  }
 } 
 
-export default Advancedsurvey
+const mapStateToProps = (state) => {
+  return {
+      
+  };
+};
+
+export default connect(mapStateToProps,
+  {updateAdvancedsurvey })(Advancedsurvey);
