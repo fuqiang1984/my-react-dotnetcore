@@ -3,14 +3,11 @@ import * as Survey from "survey-react";
 
 import { connect } from 'react-redux';
 import { updateAdvancedsurvey } from ".././../../redux/actions/advancedsurvey";
-import { advancedsurveyFetchData } from ".././../../redux/actions/advancedsurvey";
+
 
 
 class Advancedsurvey extends Component {
-   componentDidMount() {
-        this.props.advancedsurveyFetchData();
-    
-   }
+   
  //Define Survey JSON
  //Here is the simplest Survey with one text question
  json = {
@@ -235,7 +232,11 @@ class Advancedsurvey extends Component {
 
   return (<Survey.Survey model={model} onComplete={(survey,options)=>{
         console.log("Survey results: " + JSON.stringify(survey.data));
-        this.props.updateAdvancedsurvey(JSON.stringify(survey.data));
+        var surveyresult={
+          "SurveyId" : "f74d6899-9ed2-4137-9876-66b070553f8f",
+          "JSONResult":JSON.stringify(survey.data)
+        };
+        this.props.updateAdvancedsurvey(surveyresult);
 
   }}/>);
   /*
@@ -262,4 +263,4 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps,
-    {advancedsurveyFetchData,updateAdvancedsurvey })(Advancedsurvey);
+    {updateAdvancedsurvey })(Advancedsurvey);

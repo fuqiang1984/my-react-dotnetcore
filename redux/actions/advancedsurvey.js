@@ -13,7 +13,7 @@ export function advancedsurveyFetchData() {
         type: ADVANCEDSURVEY_LOAD,
         payload: {
             request:{
-                url:'advancedsurvey'
+                url:'surveyresult'
             }
         }
     }
@@ -26,10 +26,10 @@ export function updateAdvancedsurvey(advancedsurveyRec) {
         type: ADVANCEDSURVEY_UPDATE,
         payload: {
             request: {
-                method: 'PUT', // UPDATE RECORD
-                url: 'advancedsurvey/',
+                method: 'POST', // UPDATE RECORD
+                url: 'surveyresult',
                 data: {
-                    ...advancedsurveyRec
+                    advancedsurveyRec
                 }
             }
         }

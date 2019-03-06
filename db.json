@@ -35,8 +35,41 @@
       ]
     }
   ],
-  "advancedsurvey":[
-    {}
+  "advancedsurvey": [
+    {
+      "id": "45454",
+      "respondjson": "Gabriel"
+    },
+    {
+      "advancedsurveyRec": "{\"choosepicture\":\"panda\",\"price to competitors\":\"More expensive\"}",
+      "id": "CIpkmMl"
+    },
+    {
+      "respondjson": [
+        {
+          "Name": "James",
+          "gender": "Male"
+        },
+        {
+          "Name": "qiang",
+          "gender": "female"
+        }
+      ],
+      "id": "-HgLl7f"
+    },
+    {
+      "respondjson": [
+        {
+          "Name": "James",
+          "gender": "Male"
+        },
+        {
+          "Name": "qiang",
+          "gender": "female"
+        }
+      ],
+      "id": "fPTzFTd"
+    }
   ],
   "speakers": [
     {
@@ -716,6 +749,9 @@
       "firstName": "Raheel",
       "lastName": "Zubairy",
       "imageUrl": "assets/images/speakers/speaker-46056.jpg"
+    },
+    {
+      "id": "zmVOcqZ"
     }
   ],
   "sessions": [

@@ -1,4 +1,4 @@
-import {SPEAKER_LOAD, SPEAKER_LOAD_FAIL, SPEAKER_LOAD_SUCCESS} from "../actions/speakers";
+import {SPEAKER_LOAD1, SPEAKER_LOAD_FAIL, SPEAKER_LOAD1_SUCCESS} from "../actions/speakers";
 
 export function speakers(state = {
     data: [],
@@ -8,13 +8,13 @@ export function speakers(state = {
 }, action) {
     switch (action.type) {
 
-        case SPEAKER_LOAD: {
+        case SPEAKER_LOAD1: {
             return Object.assign({}, state, {
                 isLoading: true,
                 hasErrored: false
             });
         }
-        case SPEAKER_LOAD_SUCCESS: {
+        case SPEAKER_LOAD1_SUCCESS: {
             return Object.assign({}, state, {
                 data: action.payload.data,
                 isLoading: false,
