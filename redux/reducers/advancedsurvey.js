@@ -1,4 +1,4 @@
-import { ADVANCEDSURVEY_LOAD,ADVANCEDSURVEY_LOAD_FAIL,ADVANCEDSURVEY_LOAD_SUCCESS,
+import { SURVEY_LOAD,SURVEY_LOAD_FAIL,SURVEY_LOAD_SUCCESS,
     ADVANCEDSURVEY_UPDATE,
     ADVANCEDSURVEY_UPDATE_FAIL,
     ADVANCEDSURVEY_UPDATE_SUCCESS   } from "../actions/advancedsurvey";
@@ -10,26 +10,11 @@ export function advancedsurvey(state = {
                              data: [],
                              isLoading: true,
                              hasErrored: false,
-                             errorMessage: ""
+                             errorMessage: "",
+                             submitted:false
                          },
                          action) {
     function updateOneAdvancedsurvey(state, advancedsurveyIdToUpdate, newInterestLevel) {
-        // STILL PROBLEM WITH DATE, fails because newState nested nested data still references old state
-        // let newState = Object.assign({}, state);
-        // let newData = [];
-        // newState.data.map(function(rec){
-        //     if (rec.id === advancedsurveyIdToUpdate) {
-        //         rec.interestLevel = newInterestLevel;
-        //         newData.push(rec);
-        //     } else {
-        //         newData.push(rec);
-        //     }
-        // });
-        // newState.data = newData;
-        // return newState;
-
-        // THIS WORKS
-        //qfu so complex what mean?
         return {
             ...state,
             data: state.data.map((rec) => {
@@ -40,20 +25,20 @@ export function advancedsurvey(state = {
         };
     }
     switch (action.type) {
-        case ADVANCEDSURVEY_LOAD: {
+        case SURVEY_LOAD: {
             return Object.assign({}, state, {
                 isLoading: true,
                 hasErrored: false
             });
         }
-        case ADVANCEDSURVEY_LOAD_SUCCESS: {
+        case SURVEY_LOAD_SUCCESS: {
             return Object.assign({}, state, {
                 data: action.payload.data,
                 isLoading: false,
                 hasErrored: false
             });
         }
-        case ADVANCEDSURVEY_LOAD_FAIL: {
+        case SURVEY_LOAD_FAIL: {
             return Object.assign({}, state, {
                 isLoading: false,
                 hasErrored: true,
@@ -61,32 +46,31 @@ export function advancedsurvey(state = {
             });
         }
 
-        ///////////// ADVANCEDSURVEY_UPDATE* (PUT) /////////////////////////////////////////////////////////////////
+        ///////////// ADVANCEDSURVEY_UPDATE* (POST) /////////////////////////////////////////////////////////////////
         case ADVANCEDSURVEY_UPDATE: {
             return Object.assign({}, state, {
                 data: action.payload.data,
-                isLoading: false,
-                hasErrored: false
+                isLoading: true,
+                hasErrored: false,
+                submitted:false
             });
-            //const advancedsurveyIdToUpdate = action.payload.request.data.id;
-           // const newInterestLevel = STATUS_SAVING;
-
-            //const newState = updateOneAdvancedsurvey(
-               // state,advancedsurveyIdToUpdate,newInterestLevel);
-            //return newState;
+           
         }
         case ADVANCEDSURVEY_UPDATE_SUCCESS: {
            return Object.assign({}, state, {
                 data: action.payload.data,
                 isLoading: false,
-                hasErrored: false
+                hasErrored: false,
+                submitted:true
             });
         }
         case ADVANCEDSURVEY_UPDATE_FAIL: {
             return Object.assign({}, state, {
                 data: action.payload.data,
                 isLoading: false,
-                hasErrored: false
+                hasErrored: true,
+                errorMessage: action.error.message,
+                submitted:false 
             });
         }
         default:

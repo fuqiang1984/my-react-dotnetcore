@@ -3,6 +3,7 @@ import * as Survey from "survey-react";
 
 import { connect } from 'react-redux';
 import { updateAdvancedsurvey } from ".././../../redux/actions/advancedsurvey";
+import {surveyFetchData} from ".././../../redux/actions/survey";
 
 
 
@@ -215,6 +216,14 @@ class Advancedsurvey extends Component {
     ]
   };
 
+
+  componentDidMount() {
+
+    //this.props.surveyFetchData();
+
+
+  }
+
  
 
  //Define a callback methods on survey complete
@@ -225,20 +234,37 @@ class Advancedsurvey extends Component {
     
  }
  render() {
-  //Create the model and pass it into react Survey component
-  //You may create survey model outside the render function and use it in your App or component
-  //The most model properties are reactive, on their change the component will change UI when needed.
-  var model = new Survey.Model(this.json);
+  
+  /*
+  if (this.props.isLoading) {
+     return <span><i>Loading...</i></span>
+  }
+  else if (this.props.hasErrored) {
+     return <span><b>Failed to load data: {this.props.errorMessage}</b></span>
+  }else {
+    */
+          //Create the model and pass it into react Survey component
+          //You may create survey model outside the render function and use it in your App or component
+          //The most model properties are reactive, on their change the component will change UI when needed.
+        if(this.props.submitted){
+            return (<div>{JSON.stringify(this.props.surveyReult)}</div>);
+        }
+       // debugger;
+        var model = new Survey.Model(this.json);
 
-  return (<Survey.Survey model={model} onComplete={(survey,options)=>{
-        console.log("Survey results: " + JSON.stringify(survey.data));
-        var surveyresult={
-          "SurveyId" : "f74d6899-9ed2-4137-9876-66b070553f8f",
-          "JSONResult":JSON.stringify(survey.data)
-        };
-        this.props.updateAdvancedsurvey(surveyresult);
+        return (<Survey.Survey model={model} onComplete={(survey,options)=>{
+              console.log("Survey results: " + JSON.stringify(survey.data));
+              var surveyresult={
+                SurveyId : "f74d6899-9ed2-4137-9876-66b070553f8f",
+                JSONResult:JSON.stringify(survey.data)
+              }
+                
+              this.props.updateAdvancedsurvey(surveyresult);
 
-  }}/>);
+        }}/>);
+       
+  //}
+ 
   /*
   //The alternative way. react Survey component will create survey model internally
   return (<Survey.Survey json={this.json} onComplete={this.onComplete}/>);
@@ -255,12 +281,13 @@ class Advancedsurvey extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        speakers: state.advancedsurvey.data,       // to match this.props.speakers:reducers.state.speakers.data
+        surveyReult: state.advancedsurvey.data,       // to match this.props.speakers:reducers.state.speakers.data
         hasErrored: state.advancedsurvey.hasErrored,
         isLoading: state.advancedsurvey.isLoading,
-        errorMessage: state.advancedsurvey.errorMessage
+        errorMessage: state.advancedsurvey.errorMessage,
+        submitted:state.advancedsurvey.submitted
     };
 };
 
 export default connect(mapStateToProps,
-    {updateAdvancedsurvey })(Advancedsurvey);
+    {updateAdvancedsurvey,surveyFetchData })(Advancedsurvey);
