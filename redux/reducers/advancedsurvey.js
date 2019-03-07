@@ -1,4 +1,4 @@
-import { SURVEY_LOAD,SURVEY_LOAD_FAIL,SURVEY_LOAD_SUCCESS,
+import { 
     ADVANCEDSURVEY_UPDATE,
     ADVANCEDSURVEY_UPDATE_FAIL,
     ADVANCEDSURVEY_UPDATE_SUCCESS   } from "../actions/advancedsurvey";
@@ -25,26 +25,7 @@ export function advancedsurvey(state = {
         };
     }
     switch (action.type) {
-        case SURVEY_LOAD: {
-            return Object.assign({}, state, {
-                isLoading: true,
-                hasErrored: false
-            });
-        }
-        case SURVEY_LOAD_SUCCESS: {
-            return Object.assign({}, state, {
-                data: action.payload.data,
-                isLoading: false,
-                hasErrored: false
-            });
-        }
-        case SURVEY_LOAD_FAIL: {
-            return Object.assign({}, state, {
-                isLoading: false,
-                hasErrored: true,
-                errorMessage: action.error.message //where is this qfu
-            });
-        }
+        
 
         ///////////// ADVANCEDSURVEY_UPDATE* (POST) /////////////////////////////////////////////////////////////////
         case ADVANCEDSURVEY_UPDATE: {

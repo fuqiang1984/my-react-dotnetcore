@@ -219,7 +219,7 @@ class Advancedsurvey extends Component {
 
   componentDidMount() {
 
-    //this.props.surveyFetchData();
+    this.props.surveyFetchData();
 
 
   }
@@ -234,15 +234,15 @@ class Advancedsurvey extends Component {
     
  }
  render() {
+  //console.log(this.props.survey.JSONDefinition);
   
-  /*
   if (this.props.isLoading) {
      return <span><i>Loading...</i></span>
   }
   else if (this.props.hasErrored) {
      return <span><b>Failed to load data: {this.props.errorMessage}</b></span>
   }else {
-    */
+         console.log(JSON.stringify(this.props.survey.JSONDefinition));
           //Create the model and pass it into react Survey component
           //You may create survey model outside the render function and use it in your App or component
           //The most model properties are reactive, on their change the component will change UI when needed.
@@ -263,7 +263,7 @@ class Advancedsurvey extends Component {
 
         }}/>);
        
-  //}
+  }
  
   /*
   //The alternative way. react Survey component will create survey model internally
@@ -281,10 +281,11 @@ class Advancedsurvey extends Component {
 
 const mapStateToProps = (state) => {
     return {
+        survey: state.survey.data,
         surveyReult: state.advancedsurvey.data,       // to match this.props.speakers:reducers.state.speakers.data
-        hasErrored: state.advancedsurvey.hasErrored,
-        isLoading: state.advancedsurvey.isLoading,
-        errorMessage: state.advancedsurvey.errorMessage,
+        hasErrored: state.survey.hasErrored,
+        isLoading: state.survey.isLoading,
+        errorMessage: state.survey.errorMessage,
         submitted:state.advancedsurvey.submitted
     };
 };
