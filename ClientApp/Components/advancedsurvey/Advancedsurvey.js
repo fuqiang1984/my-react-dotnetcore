@@ -249,8 +249,11 @@ class Advancedsurvey extends Component {
         if(this.props.submitted){
             return (<div>{JSON.stringify(this.props.surveyReult)}</div>);
         }
-       // debugger;
-        var model = new Survey.Model(this.json);
+       
+       var json=this.props.survey.JSONDefinition;
+       let jsonObject = JSON.parse(json);
+       debugger;
+        var model = new Survey.Model(jsonObject);
 
         return (<Survey.Survey model={model} onComplete={(survey,options)=>{
               console.log("Survey results: " + JSON.stringify(survey.data));
