@@ -5,6 +5,7 @@ export const SPEAKER_LOAD_FAIL = 'SPEAKER_LOAD_FAIL';
 export function speakersFetchData() {
     return {
         type: SPEAKER_LOAD,
+        //types: ['SPEAKER_LOAD','AWESOME','OH_NO'],
         payload: {
             request:{
                 url:'speakers'
