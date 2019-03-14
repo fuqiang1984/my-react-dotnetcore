@@ -1,23 +1,7 @@
-export const ADVANCEDSURVEY_LOAD = 'ADVANCEDSURVEY_LOAD';
-export const ADVANCEDSURVEY_LOAD_SUCCESS = 'ADVANCEDSURVEY_LOAD_SUCCESS';
-export const ADVANCEDSURVEY_LOAD_FAIL = 'ADVANCEDSURVEY_LOAD_FAIL';
-
 export const ADVANCEDSURVEY_UPDATE = 'ADVANCEDSURVEY_UPDATE';
 export const ADVANCEDSURVEY_UPDATE_SUCCESS = 'ADVANCEDSURVEY_UPDATE_SUCCESS';
 export const ADVANCEDSURVEY_UPDATE_FAIL = 'ADVANCEDSURVEY_UPDATE_FAIL';
 
-export function advancedsurveyFetchData() {
-    console.log("actions/advancedsurvey.js/advancedsurveyFetchData ADVANCEDSURVEY_LOAD....");
-    //debugger;
-    return {
-        type: ADVANCEDSURVEY_LOAD,
-        payload: {
-            request:{
-                url:'advancedsurvey'
-            }
-        }
-    }
-}
 
 
 export function updateAdvancedsurvey(advancedsurveyRec) {
@@ -26,11 +10,14 @@ export function updateAdvancedsurvey(advancedsurveyRec) {
         type: ADVANCEDSURVEY_UPDATE,
         payload: {
             request: {
-                method: 'PUT', // UPDATE RECORD
-                url: 'advancedsurvey/',
-                data: {
-                    ...advancedsurveyRec
-                }
+                method: 'POST', // UPDATE RECORD
+                url: 'surveyresult',
+                data: advancedsurveyRec,
+                headers: {
+                    // advancedsurveyRec
+                    'Content-Type' : "application/vnd.marvin.author.full+json"
+                    
+                 },
             }
         }
     }
