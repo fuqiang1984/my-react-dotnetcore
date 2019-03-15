@@ -1,6 +1,6 @@
-import {SPEAKER_LOAD, SPEAKER_LOAD_FAIL, SPEAKER_LOAD_SUCCESS} from "../actions/speakers";
+import * as types from '../actions/actionTypes';
 
-export function speakers(state = {
+export function teamReducer(state = {
     data: [],
     isLoading: true,
     hasErrored: false,
@@ -8,13 +8,13 @@ export function speakers(state = {
 }, action) {
     switch (action.type) {
 
-        case SPEAKER_LOAD: {
+        case types.TEAMS_LOAD: {
             return Object.assign({}, state, {
                 isLoading: true,
                 hasErrored: false
             });
         }
-        case SPEAKER_LOAD_SUCCESS: {
+        case types.TEAMS_LOAD_SUCCESS: {
             return Object.assign({}, state, {
                 data: action.payload.data,
                 isLoading: false,
@@ -22,7 +22,7 @@ export function speakers(state = {
             });
         }
 
-        case SPEAKER_LOAD_FAIL: {
+        case types.TEAMS_LOAD_FAIL: {
             return Object.assign({}, state, {
                 isLoading: false,
                 hasErrored: true,

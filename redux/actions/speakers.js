@@ -1,5 +1,5 @@
-export const SPEAKER_LOAD1 = 'SPEAKER_LOAD1';
-export const SPEAKER_LOAD1_SUCCESS = 'SPEAKER_LOAD1_SUCCESS';
+export const SPEAKER_LOAD = 'SPEAKER_LOAD';
+export const SPEAKER_LOAD_SUCCESS = 'SPEAKER_LOAD_SUCCESS';
 export const SPEAKER_LOAD_FAIL = 'SPEAKER_LOAD_FAIL';
 
 export function speakersFetchData() {
