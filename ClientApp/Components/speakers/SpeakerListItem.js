@@ -13,6 +13,8 @@ export default function SpeakerListItem({
     const basename = "";
     const img = () => {
         if (process.env.NODE_ENV === 'development') {
+            //var str = firstName;
+            //console.log("firstname equals" + str);
             return (
                 <img
                     src={`${basename}/assets/images/speakers/speaker-${id}.jpg`}
