@@ -1,0 +1,8 @@
+export const TEAMS_LOAD = 'TEAMS_LOAD';
+export const TEAMS_LOAD_SUCCESS = 'TEAMS_LOAD_SUCCESS';
+export const TEAMS_LOAD_FAIL = 'TEAMS_LOAD_FAIL';
+
+export const TEAM_CREATE = 'TEAM_CREATE';
+export const TEAM_CREATE_SUCCESS = 'TEAM_CREATE_SUCCESS';
+export const TEAM_CREATE_FAIL = 'TEAM_CREATE_FAIL';
+

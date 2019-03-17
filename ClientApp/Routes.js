@@ -9,6 +9,7 @@ import Advancedsurvey from "./Components/advancedsurvey/Advancedsurvey";
 import Mytest from "./Components/mytest/Mytest";
 import Login from "./Components/common/Login";
 import RouteNotFound from "./RouteNotFound";
+import TeamsPage from './Components/team/TeamsPage';
 
 
 
@@ -35,6 +36,7 @@ class Routes extends Component {
                     <Route exact path="/advancedsurvey" component={Advancedsurvey}/>
                     <Route exact path="/login" component={Login}/>
                     <Route exact path="/mytest123" component={Mytest}/>
+                    <Route exact path="/teams" component={TeamsPage}/>
                     <Route render={() => <RouteNotFound />}></Route>
                 </Switch>
             </div>

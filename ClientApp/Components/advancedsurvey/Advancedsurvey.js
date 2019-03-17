@@ -4,7 +4,7 @@ import * as Survey from "survey-react";
 import { connect } from 'react-redux';
 import { updateAdvancedsurvey } from ".././../../redux/actions/advancedsurvey";
 import {surveyFetchData} from ".././../../redux/actions/survey";
-
+import SurveyResult from './SurveyResult';
 
 
 class Advancedsurvey extends Component {
@@ -219,7 +219,7 @@ class Advancedsurvey extends Component {
 
   componentDidMount() {
 
-    this.props.surveyFetchData();
+   // this.props.surveyFetchData();
 
 
   }
@@ -235,7 +235,31 @@ class Advancedsurvey extends Component {
  }
  render() {
   //console.log(this.props.survey.JSONDefinition);
+
+  if(this.props.submitted){
+    console.log(this.props.surveyReult.JSONResult);
+    let jsonObject = JSON.parse(this.props.surveyReult.JSONResult);
+    debugger;
+    return (<div><SurveyResult surveyResults={jsonObject}/></div>);
+   // return (<div>{JSON.stringify(this.props.surveyReult)}</div>);
+}
+
+
+//debugger;
+var model = new Survey.Model(this.json);
+
+return (<Survey.Survey model={model} onComplete={(survey,options)=>{
+      console.log("Survey results: " + JSON.stringify(survey.data));
+      var surveyresult={
+        SurveyId : "f74d6899-9ed2-4137-9876-66b070553f8f",
+        JSONResult:JSON.stringify(survey.data)
+      }
+        
+      this.props.updateAdvancedsurvey(surveyresult);
+
+}}/>);
   
+  /*
   if (this.props.isLoading) {
      return <span><i>Loading...</i></span>
   }
@@ -252,8 +276,8 @@ class Advancedsurvey extends Component {
        
        var json=this.props.survey.JSONDefinition;
        let jsonObject = JSON.parse(json);
-       debugger;
-        var model = new Survey.Model(jsonObject);
+       //debugger;
+        var model = new Survey.Model(this.json);
 
         return (<Survey.Survey model={model} onComplete={(survey,options)=>{
               console.log("Survey results: " + JSON.stringify(survey.data));
@@ -267,7 +291,7 @@ class Advancedsurvey extends Component {
         }}/>);
        
   }
- 
+ */
   /*
   //The alternative way. react Survey component will create survey model internally
   return (<Survey.Survey json={this.json} onComplete={this.onComplete}/>);
