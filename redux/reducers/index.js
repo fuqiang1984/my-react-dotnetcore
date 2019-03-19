@@ -4,6 +4,7 @@ import {sessions} from './sessions';
 import {surveys} from './surveys';
 import {survey} from './survey';
 import {advancedsurvey} from './advancedsurvey';
+import {teamsReducer} from './teamsReducer';
 import {teamReducer} from './teamReducer';
 
 
@@ -14,5 +15,6 @@ export default combineReducers({
     surveys,
     survey,
     advancedsurvey,
+    teamsReducer,
     teamReducer
 });

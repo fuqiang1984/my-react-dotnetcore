@@ -4,26 +4,38 @@ import TextInput from '../common/TextInput';
 import SelectInput from '../common/SelectInput';
 
 
-export default function TeamForm({ team }) {
+export default function TeamForm({ team, onSave, onChange, saving, errors }) {
   return (
     <form>
     <h1>Manage Team</h1>
     <TextInput
-      name="name"
-      label="Name"
-      value={team.Name}
+      name="firstname"
+      label="FirstName"
+      value={team.FirstName}
       onChange={onChange}
-      error={errors.Name}/>
+      error={errors.FirstName}/>
 
-    <SelectInput
-      name="Genre"
+      <TextInput
+      name="lastname"
+      label="LastName"
+      value={team.LastName}
+      onChange={onChange}
+      error={errors.LastName}/>
+
+      <TextInput
+      name="age"
+      label="Age"
+      value={team.Age}
+      onChange={onChange}
+      error={errors.Age}/>
+
+      <TextInput
+      name="genre"
       label="Genre"
       value={team.Genre}
-      defaultOption="Select Genre"
-      options={allNames}
-      onChange={onChange} error={errors.Genre}/>
+      onChange={onChange}
+      error={errors.Genre}/>
 
-    
     <input
       type="submit"
       disabled={saving}

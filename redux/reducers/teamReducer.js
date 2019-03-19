@@ -1,33 +1,38 @@
 import * as types from '../actions/actionTypes';
 
+
 export function teamReducer(state = {
-    data: [],
-    isLoading: true,
+    team: [],
+    saving: false,
     hasErrored: false,
-    errorMessage: ""
+    errors: "",
+    success: false
 }, action) {
     switch (action.type) {
 
-        case types.TEAMS_LOAD: {
-            return Object.assign({}, state, {
-                isLoading: true,
-                hasErrored: false
-            });
-        }
-        case types.TEAMS_LOAD_SUCCESS: {
-            return Object.assign({}, state, {
-                data: action.payload.data,
-                isLoading: false,
-                hasErrored: false
+       case types.TEAM_CREATE:{
+            return Object.assign({}, state, {           
+                saving: true,
+                success:false
             });
         }
 
-        case types.TEAMS_LOAD_FAIL: {
-            return Object.assign({}, state, {
-                isLoading: false,
-                hasErrored: true,
-                errorMessage: action.error.message
+        case types.TEAM_CREATE_SUCCESS:{
+            return Object.assign({}, state, {           
+                saving: false,
+                team: action.payload.data,
+                success:true
             });
+            
+        }
+        
+        case types.TEAM_CREATE_FAIL:{
+            return Object.assign({}, state, {           
+                saving: false,
+                hasErrored:true,
+                errors:action.error.message
+            });
+
         }
 
         default:

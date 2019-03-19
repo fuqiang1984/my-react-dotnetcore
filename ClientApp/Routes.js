@@ -10,6 +10,7 @@ import Mytest from "./Components/mytest/Mytest";
 import Login from "./Components/common/Login";
 import RouteNotFound from "./RouteNotFound";
 import TeamsPage from './Components/team/TeamsPage';
+import ManageTeamPage from './Components/team/ManageTeamPage';
 
 
 
@@ -37,6 +38,7 @@ class Routes extends Component {
                     <Route exact path="/login" component={Login}/>
                     <Route exact path="/mytest123" component={Mytest}/>
                     <Route exact path="/teams" component={TeamsPage}/>
+                    <Route path="/team/:id?" component={ManageTeamPage} />
                     <Route render={() => <RouteNotFound />}></Route>
                 </Switch>
             </div>

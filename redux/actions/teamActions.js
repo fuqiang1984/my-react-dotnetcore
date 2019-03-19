@@ -18,7 +18,7 @@ export function teamCreate(team) {
             request: {
                 method: 'POST', // UPDATE RECORD
                 url: 'teams',
-                data: team,
+                data: team, 
                 headers: {
                     // advancedsurveyRec
                     'Content-Type' : "application/vnd.marvin.author.full+json"
