@@ -10,13 +10,13 @@ import { Redirect } from 'react-router-dom';
 
 class ManageTeamPage extends Component {
 
-    constructor(props) {
+    constructor(props,context) {
         super(props);
         this.state = {
             team: Object.assign({}, props.team),
             errors: {},
             saving: false,
-            success:props.success
+            success:false
           };
         this.updateTeamState=this.updateTeamState.bind(this); 
         this.saveTeam=this.saveTeam.bind(this); 
@@ -47,6 +47,13 @@ class ManageTeamPage extends Component {
         return this.setState({team: team});
     }
 
+    redirect() {
+      this.setState({saving: false});
+      //toastr.success('Course saved');
+      this.setState({success:true});
+      //this.context.router.push('/teams');
+    }
+
     saveTeam(event) {
         event.preventDefault();
        
@@ -56,7 +63,11 @@ class ManageTeamPage extends Component {
     
         this.setState({saving: true});
        
-        this.props.teamCreate(this.state.team);
+        this.props.teamCreate(this.state.team)
+        .then(() => this.redirect())
+        .catch((response) => {
+               //handle form errors
+        });
     
         /*
         this.props.actions.saveCourse(this.state.course)
@@ -72,8 +83,8 @@ class ManageTeamPage extends Component {
 
 
     render() {    
-            if(this.props.success==true){
-                this.props.success=false;
+            if(this.state.success==true){
+                
                 return <Redirect to='/teams' />
             }
             return (
@@ -85,8 +96,8 @@ class ManageTeamPage extends Component {
                 onChange={this.updateTeamState}
                 onSave={this.saveTeam}
                 team={this.state.team}
-                errors={this.props.errors}
-                saving={this.props.saving}
+                errors={this.state.errors}
+                saving={this.state.saving}
               />
             );
     }
@@ -97,10 +108,10 @@ class ManageTeamPage extends Component {
 const mapStateToProps = (state) => {
 
     return {
-        team: state.teamReducer.data,
-        success:state.teamReducer.success,
-        errors:state.teamReducer.errors,
-        saving:state.teamReducer.saving
+        //team: state.teamReducer.data,
+        //success:state.teamReducer.success,
+        //errors:state.teamReducer.errors,
+        //saving:state.teamReducer.saving
     };
 };
 
