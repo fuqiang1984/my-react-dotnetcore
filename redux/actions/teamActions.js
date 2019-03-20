@@ -1,11 +1,11 @@
 import * as types from './actionTypes';
 
-export function teamsFetchData() {
+export function teamsFetchData(teamsResourceParameters) {
     return {
         type: types.TEAMS_LOAD,
         payload: {
             request:{
-                url:'teams'
+                url:'teams' + '?PageNumber=' + teamsResourceParameters.PageNumber
             }
         }
     }

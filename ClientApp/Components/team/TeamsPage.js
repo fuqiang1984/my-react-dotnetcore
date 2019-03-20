@@ -35,6 +35,16 @@ class TeamsPage extends Component {
         this.props.teamsFetchData();
     }
 
+    GoPrev=()=>{
+
+    }
+   
+    
+    GoNext=()=>{
+        var teamsResourceParameters = {PageNumber: 3};
+        this.props.teamsFetchData(teamsResourceParameters);
+    }
+
    
 
     render() {
@@ -54,7 +64,7 @@ class TeamsPage extends Component {
                         value="Add Team"
                         className="btn btn-primary"
                         onClick={this.setRedirect}/>
-                    <TeamList teams={this.props.teams} />
+                    <TeamList onPrev={this.GoPrev} onNext={this.GoNext} teams={this.props.teams} />
                 </div>
             );
         }

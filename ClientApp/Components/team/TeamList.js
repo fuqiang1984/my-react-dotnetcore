@@ -2,8 +2,9 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import TeamListItem from './TeamListItem';
 
-export default function TeamList({ teams }) {
+export default function TeamList({ teams,onPrev,onNext }) {
   return (
+    <React.Fragment>
         <table className="table">
             <thead>
                 <tr>
@@ -18,8 +19,14 @@ export default function TeamList({ teams }) {
                 {teams.map(team =>
                 <TeamListItem key={team.Id} team={team}/>
                 )}
+                
             </tbody>
         </table>
+        
+             <a href="#" onClick={onPrev}>Prev</a>
+             <a href="#" onClick={onNext}>Next</a>
+         </React.Fragment>
+       
   );
 }
 
