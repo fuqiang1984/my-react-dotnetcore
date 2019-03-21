@@ -15,7 +15,8 @@ class TeamsPage extends Component {
         this.state = {
             isLoading: true,
             appData: [],
-            redirect: false
+            redirect: false,
+            teamsResourceParameters:{PageNumber: 1}
         };
         //this.redirectToAddTeamPage=this.redirectToAddTeamPage.bind(this);
     }
@@ -32,7 +33,9 @@ class TeamsPage extends Component {
     }
 
     componentDidMount() {
-        this.props.teamsFetchData();
+        //var teamsResourceParameters = {PageNumber: 3};
+        this.props.teamsFetchData(this.state.teamsResourceParameters);
+        console.log("didmount:"+this.state.teamsResourceParameters.PageNumber);
     }
 
     GoPrev=()=>{
@@ -41,8 +44,19 @@ class TeamsPage extends Component {
    
     
     GoNext=()=>{
-        var teamsResourceParameters = {PageNumber: 3};
-        this.props.teamsFetchData(teamsResourceParameters);
+       // var teamsResourceParameters = {PageNumber: 3};
+      // this.setState({
+             // teamsResourceParameters: {PageNumber: }
+        // });
+        event.preventDefault();
+        this.setState(prevState => ({
+            //profiles: [...prevState.profiles, profileData],
+            
+            teamsResourceParameters:{PageNumber:prevState.teamsResourceParameters.PageNumber+1}
+        }));
+
+        console.log(this.state.teamsResourceParameters.PageNumber);
+        this.props.teamsFetchData(this.state.teamsResourceParameters);
     }
 
    
