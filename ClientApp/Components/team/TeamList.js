@@ -4,7 +4,7 @@ import TeamListItem from './TeamListItem';
 
 export default function TeamList({ teams,onPrev,onNext }) {
   return (
-    <React.Fragment>
+   
         <table className="table">
             <thead>
                 <tr>
@@ -22,10 +22,6 @@ export default function TeamList({ teams,onPrev,onNext }) {
                 
             </tbody>
         </table>
-        
-             <a href="#" onClick={onPrev}>Prev</a>
-             <a href="#" onClick={onNext}>Next</a>
-         </React.Fragment>
        
   );
 }

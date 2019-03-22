@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
 import { teamCreate } from ".././../../redux/actions/teamActions";
 import { Redirect } from 'react-router-dom'; 
 
+
 class ManageTeamPage extends Component {
 
     constructor(props,context) {
@@ -99,6 +100,7 @@ class ManageTeamPage extends Component {
                 errors={this.state.errors}
                 saving={this.state.saving}
               />
+              
             );
     }
 }

@@ -17,6 +17,7 @@ export function teamsReducer(state = {
         case types.TEAMS_LOAD_SUCCESS: {
             return Object.assign({}, state, {
                 data: action.payload.data,
+                headers:action.payload.headers,
                 isLoading: false,
                 hasErrored: false
             });

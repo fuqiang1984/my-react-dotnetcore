@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import TeamList from './TeamList';
 import { Redirect } from 'react-router-dom'
+import Pagination from '../common/Pagination'
+
 //import axios from 'axios';
 
 import { connect } from 'react-redux';
@@ -38,28 +40,43 @@ class TeamsPage extends Component {
         console.log("didmount:"+this.state.teamsResourceParameters.PageNumber);
     }
 
+    
+
     GoPrev=()=>{
+        event.preventDefault();
+        console.log("before set:"+this.state.teamsResourceParameters.PageNumber);
+        this.setState(
+            (prevstate,props)=>(
+                {
+                    teamsResourceParameters:{PageNumber:prevstate.teamsResourceParameters.PageNumber-1}
+                }
+              ),
+              ()=>{
+                console.log("gonext:" + this.state.teamsResourceParameters.PageNumber);
+                this.props.teamsFetchData(this.state.teamsResourceParameters);
+              }
+            );
 
     }
    
     
     GoNext=()=>{
-       // var teamsResourceParameters = {PageNumber: 3};
-      // this.setState({
-             // teamsResourceParameters: {PageNumber: }
-        // });
         event.preventDefault();
-        this.setState(prevState => ({
-            //profiles: [...prevState.profiles, profileData],
-            
-            teamsResourceParameters:{PageNumber:prevState.teamsResourceParameters.PageNumber+1}
-        }));
-
-        console.log(this.state.teamsResourceParameters.PageNumber);
-        this.props.teamsFetchData(this.state.teamsResourceParameters);
+        console.log("before set:"+this.state.teamsResourceParameters.PageNumber);
+        this.setState(
+            (prevstate,props)=>(
+                {
+                    teamsResourceParameters:{PageNumber:prevstate.teamsResourceParameters.PageNumber+1}
+                }
+              ),
+              ()=>{
+                console.log("gonext:" + this.state.teamsResourceParameters.PageNumber);
+                this.props.teamsFetchData(this.state.teamsResourceParameters);
+              }
+            );
     }
 
-   
+    
 
     render() {
 
@@ -71,6 +88,7 @@ class TeamsPage extends Component {
         }
         else {
             return (
+                <React.Fragment>
                 <div>
                     <h1>Teams</h1>
                     {this.renderRedirect()}
@@ -78,8 +96,12 @@ class TeamsPage extends Component {
                         value="Add Team"
                         className="btn btn-primary"
                         onClick={this.setRedirect}/>
-                    <TeamList onPrev={this.GoPrev} onNext={this.GoNext} teams={this.props.teams} />
+                    <TeamList  teams={this.props.teams} />
+                    <h1>{this.state.teamsResourceParameters.PageNumber}</h1>
                 </div>
+                <Pagination onPrev={this.GoPrev} onNext={this.GoNext} />
+                
+                </React.Fragment>
             );
         }
 
