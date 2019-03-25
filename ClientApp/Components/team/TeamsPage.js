@@ -60,8 +60,10 @@ class TeamsPage extends Component {
     }
    
     
-    GoNext=()=>{
+    GoNext=(link)=>{
         event.preventDefault();
+        console.log(link.rel);
+        /*
         console.log("before set:"+this.state.teamsResourceParameters.PageNumber);
         this.setState(
             (prevstate,props)=>(
@@ -73,7 +75,7 @@ class TeamsPage extends Component {
                 console.log("gonext:" + this.state.teamsResourceParameters.PageNumber);
                 this.props.teamsFetchData(this.state.teamsResourceParameters);
               }
-            );
+            );*/
     }
 
     
@@ -99,7 +101,7 @@ class TeamsPage extends Component {
                     <TeamList  teams={this.props.teams} />
                     <h1>{this.state.teamsResourceParameters.PageNumber}</h1>
                 </div>
-                <Pagination onPrev={this.GoPrev} onNext={this.GoNext} />
+                <Pagination links={this.props.links} onPrev={this.GoPrev} onNext={this.GoNext} />
                 
                 </React.Fragment>
             );
@@ -116,6 +118,7 @@ const mapStateToProps = (state) => {
 
     return {
         teams: state.teamsReducer.data,       // to match this.props.speakers:reducers.state.speakers.data
+        links:state.teamsReducer.links,
         hasErrored: state.teamsReducer.hasErrored,
         isLoading: state.teamsReducer.isLoading,
         errorMessage: state.teamsReducer.errorMessage

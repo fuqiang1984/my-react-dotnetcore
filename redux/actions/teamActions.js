@@ -5,6 +5,13 @@ export function teamsFetchData(teamsResourceParameters) {
         type: types.TEAMS_LOAD,
         payload: {
             request:{
+                //application/vnd.marvin.hateoas+json
+                method: 'GET',
+                headers: {
+                    // advancedsurveyRec
+                    'Accept' : "application/vnd.marvin.hateoas+json"
+                    
+                },
                 url:'teams' + '?PageNumber=' + teamsResourceParameters.PageNumber
             }
         }

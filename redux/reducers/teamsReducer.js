@@ -4,7 +4,8 @@ export function teamsReducer(state = {
     data: [],
     isLoading: true,
     hasErrored: false,
-    errorMessage: ""
+    errorMessage: "",
+    links:[]
 }, action) {
     switch (action.type) {
 
@@ -16,8 +17,8 @@ export function teamsReducer(state = {
         }
         case types.TEAMS_LOAD_SUCCESS: {
             return Object.assign({}, state, {
-                data: action.payload.data,
-                headers:action.payload.headers,
+                data: action.payload.data.value,
+                links:action.payload.data.links,
                 isLoading: false,
                 hasErrored: false
             });
