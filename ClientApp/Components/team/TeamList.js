@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import TeamListItem from './TeamListItem';
 
-export default function TeamList({ teams,onPrev,onNext }) {
+export default function TeamList({ teams,onPrev,onNext,onHandleClick }) {
   return (
    
         <table className="table">
@@ -13,13 +13,14 @@ export default function TeamList({ teams,onPrev,onNext }) {
                     <th>Author</th>
                     <th>Category</th>
                     <th>Length</th>
+                    <th>Delete</th>
                 </tr>
             </thead>
             <tbody>
                 {teams.map(team =>
-                <TeamListItem key={team.Id} team={team}/>
+                <TeamListItem onHandleClick={onHandleClick} key={team.Id} team={team}/>
                 )}
-                
+               
             </tbody>
         </table>
        

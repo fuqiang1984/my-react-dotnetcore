@@ -24,6 +24,7 @@ class ManageTeamPage extends Component {
 
     }
 
+    
     teamFormIsValid() {
         /*
         let formIsValid = true;
@@ -42,6 +43,7 @@ class ManageTeamPage extends Component {
 
 
     updateTeamState(event) {
+        //debugger;
         const field = event.target.name;
         let team = Object.assign({}, this.state.team);
         team[field] = event.target.value;
@@ -105,12 +107,31 @@ class ManageTeamPage extends Component {
     }
 }
 
+function getTeamById(teams, id) {
+  const team = teams.filter(team => team.Id == id);
+  if (team) return team[0]; //since filter returns an array, have to grab the first.
+  return null;
+}
 
+const mapStateToProps = (state,ownProps) => {
 
-const mapStateToProps = (state) => {
+  //debugger;
+  
+  const teamId = ownProps.match.params.id; // from the path `/course/:id`
+
+  let team = {Id: '', Name: '', Age: '', Genre: ''};
+
+  if (teamId && state.teamsReducer.data.length > 0) {
+    team = getTeamById(state.teamsReducer.data, teamId);
+  }
+
+  //return {
+  //  course: course,
+  //  authors: authorsFormattedForDropdown(state.authors)
+  //};
 
     return {
-        //team: state.teamReducer.data,
+        team: team
         //success:state.teamReducer.success,
         //errors:state.teamReducer.errors,
         //saving:state.teamReducer.saving

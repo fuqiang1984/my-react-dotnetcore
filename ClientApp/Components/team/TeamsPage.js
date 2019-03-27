@@ -78,6 +78,23 @@ class TeamsPage extends Component {
             );*/
     }
 
+    getLinkById=(links, method)=> {
+      const link = links.filter(link => link.method == method);
+      if (link) return link[0]; //since filter returns an array, have to grab the first.
+      return null;
+    }
+
+    handleDelete=(team)=>{
+          var link='';
+          console.log(team.Id);
+          if (team.links.length > 0) {
+             link = this.getLinkById(team.links, "DELETE");
+          }
+          console.log(link);
+
+
+    }
+
     
 
     render() {
@@ -98,7 +115,7 @@ class TeamsPage extends Component {
                         value="Add Team"
                         className="btn btn-primary"
                         onClick={this.setRedirect}/>
-                    <TeamList  teams={this.props.teams} />
+                    <TeamList  teams={this.props.teams} onHandleClick={this.handleDelete} />
                     <h1>{this.state.teamsResourceParameters.PageNumber}</h1>
                 </div>
                 <Pagination links={this.props.links} onPrev={this.GoPrev} onNext={this.GoNext} />

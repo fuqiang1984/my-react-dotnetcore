@@ -23,14 +23,14 @@ export default function TeamForm({ team, onSave, onChange, saving, errors }) {
       error={errors.LastName}/>
 
       <TextInput
-      name="age"
+      name="Age"
       label="Age"
       value={team.Age}
       onChange={onChange}
       error={errors.Age}/>
 
       <TextInput
-      name="genre"
+      name="Genre"
       label="Genre"
       value={team.Genre}
       onChange={onChange}
