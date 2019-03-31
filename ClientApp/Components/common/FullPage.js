@@ -21,7 +21,7 @@ class FullPage extends Component {
 
     render() {
         return (
-            <div>
+            <div className="container-main">
                 <PageTop>
                     <CodeCampMenu />
                 </PageTop>
