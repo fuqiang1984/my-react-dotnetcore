@@ -41,6 +41,8 @@ class Speakers extends Component {
 
     render() {
 
+        /*
+
         if (this.props.isLoading) {
             return <span><i>Loading...</i></span>
         }
@@ -48,13 +50,15 @@ class Speakers extends Component {
             return <span><b>Failed to load data: {this.props.errorMessage}</b></span>
         }
         else {
+
+            */
             return (
                 <div>
                     <SpeakersHeader/>
                     <SpeakerList speakers={this.props.speakers} />
                 </div>
             );
-        }
+        //}
 
         // if (this.state.isLoading) {
         //     return <span><i>Loading...</i></span>

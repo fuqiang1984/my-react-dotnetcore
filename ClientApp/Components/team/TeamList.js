@@ -4,7 +4,7 @@ import TeamListItem from './TeamListItem';
 
 export default function TeamList({ teams,onPrev,onNext,onHandleClick }) {
   return (
-   
+      <div className="container-main speakers">
         <table className="table">
             <thead>
                 <tr>
@@ -23,6 +23,7 @@ export default function TeamList({ teams,onPrev,onNext,onHandleClick }) {
                
             </tbody>
         </table>
+      </div>
        
   );
 }

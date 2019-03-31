@@ -35,3 +35,15 @@ export function teamCreate(team) {
         }
     }    
 }
+
+export function teamDelete(href) {
+    return {
+        type: types.TEAM_DELETE,
+        payload: {
+            request: {
+                method: 'DELETE', // UPDATE RECORD
+                url: href
+            }
+        }
+    }    
+}

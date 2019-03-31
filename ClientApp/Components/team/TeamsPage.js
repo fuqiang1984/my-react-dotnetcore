@@ -9,6 +9,7 @@ import Pagination from '../common/Pagination'
 
 import { connect } from 'react-redux';
 import { teamsFetchData } from ".././../../redux/actions/teamActions";
+import { teamDelete } from ".././../../redux/actions/teamActions";
 
 class TeamsPage extends Component {
 
@@ -85,12 +86,24 @@ class TeamsPage extends Component {
     }
 
     handleDelete=(team)=>{
-          var link='';
+          var link=null;
           console.log(team.Id);
           if (team.links.length > 0) {
              link = this.getLinkById(team.links, "DELETE");
           }
-          console.log(link);
+        //console.log(link);
+        const production = process.env.NODE_ENV &&
+                  process.env.NODE_ENV === "production";
+        const restUrl = production ?
+                process.env.PROD_RESTURL :
+                process.env.JSONSERVER_RESTURL;
+        var newlink = link.href.replace(restUrl,'');
+       // console.log(newlink);
+
+        this.props.teamDelete(newlink).then(() => this.props.teamsFetchData(this.state.teamsResourceParameters))
+        .catch((response) => {
+               //handle form errors
+        });
 
 
     }
@@ -144,6 +157,6 @@ const mapStateToProps = (state) => {
 
 
 export default connect(mapStateToProps,
-    { teamsFetchData })(TeamsPage)
+    { teamsFetchData,teamDelete })(TeamsPage)
 
 
