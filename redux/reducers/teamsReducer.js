@@ -19,6 +19,7 @@ export function teamsReducer(state = {
             return Object.assign({}, state, {
                 data: action.payload.data.value,
                 links:action.payload.data.links,
+                x_pagination: JSON.parse(action.payload.headers["x-pagination"]),
                 isLoading: false,
                 hasErrored: false
             });

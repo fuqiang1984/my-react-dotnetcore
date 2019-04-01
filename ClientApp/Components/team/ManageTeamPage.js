@@ -5,7 +5,7 @@ import TeamForm from './TeamForm';
 //import axios from 'axios';
 
 import { connect } from 'react-redux';
-import { teamCreate } from ".././../../redux/actions/teamActions";
+import { teamSave } from ".././../../redux/actions/teamActions";
 import { Redirect } from 'react-router-dom'; 
 
 
@@ -66,7 +66,7 @@ class ManageTeamPage extends Component {
     
         this.setState({saving: true});
        
-        this.props.teamCreate(this.state.team)
+        this.props.teamSave(this.state.team)
         .then(() => this.redirect())
         .catch((response) => {
                //handle form errors
@@ -140,6 +140,6 @@ const mapStateToProps = (state,ownProps) => {
 
 
 export default connect(mapStateToProps,
-    { teamCreate })(ManageTeamPage)
+    { teamSave })(ManageTeamPage)
 
 

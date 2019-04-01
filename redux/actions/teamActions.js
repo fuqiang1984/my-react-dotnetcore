@@ -18,8 +18,24 @@ export function teamsFetchData(teamsResourceParameters) {
     }
 }
 
-export function teamCreate(team) {
-    return {
+export function teamSave(team) {
+    console.log(team.Id);
+    return team.Id ? {
+        type: types.TEAM_UPDATE,
+        payload: {
+            request: {
+                method: 'PUT', // UPDATE RECORD
+                url: 'teams'+'/'+team.Id,
+                data: team, 
+                headers: {
+                    // advancedsurveyRec
+                    'Content-Type' : "application/json"
+                    
+                 },
+            }
+        }
+    }:
+    {
         type: types.TEAM_CREATE,
         payload: {
             request: {
