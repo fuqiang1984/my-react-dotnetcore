@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import TeamList from './TeamList';
-import { Redirect } from 'react-router-dom'
-import Pagination from '../common/Pagination'
+import { Redirect } from 'react-router-dom';
+import Pagination from '../common/Pagination';
+import SearchBar from '../common/SearchBar';
 
 
 //import axios from 'axios';
@@ -110,14 +111,9 @@ class TeamsPage extends Component {
                     <div>
                         <h1>Teams</h1>
                         {this.renderRedirect()}
-                        <div class="col-md-3">
-                        <div class="input-group add-on">
-                            <input class="form-control" placeholder="Search" name="srch-term" id="srch-term" type="text" />
-                            <div class="input-group-btn">
-                                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
-                            </div>
-                        </div>
-                        </div>
+                       
+                         <SearchBar placeholder="Search" />
+                        
                         <input type="submit"
                             value="Add Team"
                             className="btn btn-primary"
