@@ -37,7 +37,7 @@ class TeamsPage extends Component {
     }
 
     componentDidMount() {
-        let pageNumber = this.props.x_pagination==null?1:this.props.x_pagination.currentPage > 0 ? this.props.x_pagination.currentPage : 1;
+        let pageNumber = this.props.x_pagination == null ? 1 : this.props.x_pagination.currentPage > 0 ? this.props.x_pagination.currentPage : 1;
         let teamsResourceParameters = { PageNumber: pageNumber };
         this.props.teamsFetchData(teamsResourceParameters);
         console.log("didmount");
@@ -110,10 +110,19 @@ class TeamsPage extends Component {
                     <div>
                         <h1>Teams</h1>
                         {this.renderRedirect()}
+                        <div class="col-md-3">
+                        <div class="input-group add-on">
+                            <input class="form-control" placeholder="Search" name="srch-term" id="srch-term" type="text" />
+                            <div class="input-group-btn">
+                                <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                            </div>
+                        </div>
+                        </div>
                         <input type="submit"
                             value="Add Team"
                             className="btn btn-primary"
                             onClick={this.setRedirect} />
+
                         <TeamList teams={this.props.teams} onHandleClick={this.handleDelete} />
                     </div>
 
