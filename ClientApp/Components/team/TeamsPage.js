@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import TeamList from './TeamList';
 import { Redirect } from 'react-router-dom'
 import Pagination from '../common/Pagination'
-import ReactPaginate from 'react-paginate';
+
 
 //import axios from 'axios';
 
@@ -20,7 +20,7 @@ class TeamsPage extends Component {
             isLoading: true,
             appData: [],
             redirect: false,
-            teamsResourceParameters: { PageNumber: 1 }
+
         };
         //this.redirectToAddTeamPage=this.redirectToAddTeamPage.bind(this);
     }
@@ -37,47 +37,34 @@ class TeamsPage extends Component {
     }
 
     componentDidMount() {
-        //var teamsResourceParameters = {PageNumber: 3};
-        this.props.teamsFetchData(this.state.teamsResourceParameters);
-        console.log("didmount:" + this.state.teamsResourceParameters.PageNumber);
+        let pageNumber = this.props.x_pagination==null?1:this.props.x_pagination.currentPage > 0 ? this.props.x_pagination.currentPage : 1;
+        let teamsResourceParameters = { PageNumber: pageNumber };
+        this.props.teamsFetchData(teamsResourceParameters);
+        console.log("didmount");
     }
 
+    onRangeClick = (event) => {
+        const field = event.target.text;
+        let teamsResourceParameters = { PageNumber: field };
+        this.props.teamsFetchData(teamsResourceParameters);
+
+    }
 
 
     GoPrev = () => {
         event.preventDefault();
-        console.log("before set:" + this.state.teamsResourceParameters.PageNumber);
-        this.setState(
-            (prevstate, props) => (
-                {
-                    teamsResourceParameters: { PageNumber: prevstate.teamsResourceParameters.PageNumber - 1 }
-                }
-            ),
-            () => {
-                console.log("gonext:" + this.state.teamsResourceParameters.PageNumber);
-                // this.props.teamsFetchData(this.state.teamsResourceParameters);
-            }
-        );
+        let teamsResourceParameters = { PageNumber: this.props.x_pagination.currentPage - 1 };
+        this.props.teamsFetchData(teamsResourceParameters);
+
 
     }
 
 
     GoNext = (link) => {
         event.preventDefault();
-        console.log(link.rel);
-        /*
-        console.log("before set:"+this.state.teamsResourceParameters.PageNumber);
-        this.setState(
-            (prevstate,props)=>(
-                {
-                    teamsResourceParameters:{PageNumber:prevstate.teamsResourceParameters.PageNumber+1}
-                }
-              ),
-              ()=>{
-                console.log("gonext:" + this.state.teamsResourceParameters.PageNumber);
-                this.props.teamsFetchData(this.state.teamsResourceParameters);
-              }
-            );*/
+        let teamsResourceParameters = { PageNumber: this.props.x_pagination.currentPage + 1 };
+        this.props.teamsFetchData(teamsResourceParameters);
+
     }
 
     getLinkById = (links, method) => {
@@ -99,47 +86,15 @@ class TeamsPage extends Component {
             process.env.PROD_RESTURL :
             process.env.JSONSERVER_RESTURL;
         var newlink = link.href.replace(restUrl, '');
-        // console.log(newlink);
 
-        this.props.teamDelete(newlink).then(() => this.props.teamsFetchData(this.state.teamsResourceParameters))
+        let teamsResourceParameters = { PageNumber: this.props.x_pagination.currentPage };
+        this.props.teamDelete(newlink).then(() => this.props.teamsFetchData(teamsResourceParameters))
             .catch((response) => {
                 //handle form errors
             });
 
 
     }
-
-
-    handlePageClick = data => {
-        //debugger;
-        let selected = data.selected;
-        //let offset = Math.ceil(selected * this.props.x_pagination.pageSize);
-        console.log(selected);
-        let pagenumber = selected + 1;
-        let teamsResourceParameters = { PageNumber: pagenumber };
-        console.log(teamsResourceParameters);
-         this.props.teamsFetchData(teamsResourceParameters);
-        /*
-         this.setState(
-             (prevstate,props)=>(
-                 {
-                     teamsResourceParameters:{PageNumber:prevstate.teamsResourceParameters.PageNumber+1}
-                 }
-               ),
-               ()=>{
-                 console.log("gonext:" + this.state.teamsResourceParameters.PageNumber);
-                 this.props.teamsFetchData(this.state.teamsResourceParameters);
-               }
-             );
-             */
-
-        //this.props.teamsFetchData(this.state.teamsResourceParameters);
-        //console.log(offset);
-        //this.setState({ offset: offset }, () => {
-        //this.loadCommentsFromServer();
-        //});
-    };
-
 
     render() {
         console.log("Begin render")
@@ -160,22 +115,11 @@ class TeamsPage extends Component {
                             className="btn btn-primary"
                             onClick={this.setRedirect} />
                         <TeamList teams={this.props.teams} onHandleClick={this.handleDelete} />
-                        <h1>{this.state.teamsResourceParameters.PageNumber}</h1>
                     </div>
-                    <Pagination links={this.props.links} onPrev={this.GoPrev} onNext={this.GoPrev} />
-                    <ReactPaginate
-                        previousLabel={'previous'}
-                        nextLabel={'next'}
-                        breakLabel={'...'}
-                        breakClassName={'break-me'}
-                        pageCount={this.props.x_pagination.totalPages}
-                        marginPagesDisplayed={2}
-                        pageRangeDisplayed={5}
-                        onPageChange={this.handlePageClick}
-                        containerClassName={'pagination'}
-                        subContainerClassName={'pages pagination'}
-                        activeClassName={'active'}
-                    />
+
+
+                    <Pagination pagination={this.props.x_pagination} onRangeClick={this.onRangeClick} onPrev={this.GoPrev} onNext={this.GoNext} />
+
                 </React.Fragment>
             );
         }
