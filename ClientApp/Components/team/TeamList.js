@@ -2,12 +2,13 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import TeamListItem from './TeamListItem';
 
-export default function TeamList({ teams,onPrev,onNext,onHandleClick }) {
+export default function TeamList({ teams,onPrev,onNext,onHandleClick,onCheckboxchange }) {
   return (
       <div>
         <table className="table">
             <thead>
                 <tr>
+                    <th>&nbsp;</th>
                     <th>&nbsp;</th>
                     <th>Title</th>
                     <th>Author</th>
@@ -18,7 +19,7 @@ export default function TeamList({ teams,onPrev,onNext,onHandleClick }) {
             </thead>
             <tbody>
                 {teams.map(team =>
-                <TeamListItem onHandleClick={onHandleClick} key={team.Id} team={team}/>
+                <TeamListItem onCheckboxchange={onCheckboxchange} onHandleClick={onHandleClick} key={team.Id} team={team}/>
                 )}
                
             </tbody>

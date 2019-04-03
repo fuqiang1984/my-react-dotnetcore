@@ -74,6 +74,12 @@ class TeamsPage extends Component {
         return null;
     }
 
+    handleCheckboxchange=(event)=>{
+
+        const field = event.target.id;
+        console.log(field);
+    }
+
     handleDelete = (team) => {
         var link = null;
         console.log(team.Id);
@@ -119,7 +125,7 @@ class TeamsPage extends Component {
                             className="btn btn-primary"
                             onClick={this.setRedirect} />
 
-                        <TeamList teams={this.props.teams} onHandleClick={this.handleDelete} />
+                        <TeamList onCheckboxchange={this.handleCheckboxchange} teams={this.props.teams} onHandleClick={this.handleDelete} />
                     </div>
 
 

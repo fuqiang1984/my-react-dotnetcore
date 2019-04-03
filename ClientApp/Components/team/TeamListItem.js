@@ -3,11 +3,16 @@ import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import DeleteButton from '../common/DeleteButton'
 
-export default function TeamListItem({team,onHandleClick}) {
+export default function TeamListItem({team,onHandleClick,onCheckboxchange}) {
 
 
     return (
         <tr>
+            <td><input
+              type="checkbox"
+              id={team.Id}
+              onChange={onCheckboxchange}
+            /></td>
             <td>Watch</td>
             <td><Link to={'/team/' + team.Id}>{team.Name}</Link></td>
             <td>{team.Id}</td>
