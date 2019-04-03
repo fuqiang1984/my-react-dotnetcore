@@ -86,6 +86,7 @@ class ManageTeamPage extends Component {
 
 
     render() {    
+            console.log("Render ManageTeamPage");
             if(this.state.success==true){
                 
                 return <Redirect to='/teams' />

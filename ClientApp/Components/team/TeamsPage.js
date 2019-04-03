@@ -21,6 +21,7 @@ class TeamsPage extends Component {
             isLoading: true,
             appData: [],
             redirect: false,
+            searchText:''
 
         };
         //this.redirectToAddTeamPage=this.redirectToAddTeamPage.bind(this);
@@ -39,7 +40,7 @@ class TeamsPage extends Component {
 
     componentDidMount() {
         let pageNumber = this.props.x_pagination == null ? 1 : this.props.x_pagination.currentPage > 0 ? this.props.x_pagination.currentPage : 1;
-        let teamsResourceParameters = { PageNumber: pageNumber };
+        let teamsResourceParameters = { PageNumber: pageNumber,searchQuery:this.state.searchText };
         this.props.teamsFetchData(teamsResourceParameters);
         console.log("didmount");
     }
@@ -97,8 +98,28 @@ class TeamsPage extends Component {
 
     }
 
+    updateSearchText=(event)=>{
+        const field = event.target.value;
+        console.log(field);
+
+        this.setState({
+            searchText:field
+        });
+        //let team = Object.assign({}, this.state.team);
+        //team[field] = event.target.value;
+        //return this.setState({team: team});
+    }
+
+    Search=(event)=>{
+        let teamsResourceParameters = { PageNumber:1,searchQuery:this.state.searchText };
+        this.props.teamsFetchData(teamsResourceParameters);
+    }
+
     render() {
         console.log("Begin render")
+        console.log("search text is:" +this.state.searchText);
+        //let filteredteams=this.state.searchText===""?this.props.teams:this.props.teams.filter(team=>team.Name.includes(this.state.searchText));
+        //debugger;
         if (this.props.isLoading) {
             return <span><i>Loading...</i></span>
         }
@@ -106,20 +127,24 @@ class TeamsPage extends Component {
             return <span><b>Failed to load data: {this.props.errorMessage}</b></span>
         }
         else {
+            //  <TeamList teams={this.state.searchText===""?this.props.teams:
+            //            this.props.teams.filter(team=>team.Name.includes(this.state.searchText))} 
+           //             onHandleClick={this.handleDelete} />
             return (
                 <React.Fragment>
                     <div>
                         <h1>Teams</h1>
                         {this.renderRedirect()}
                        
-                         <SearchBar placeholder="Search" />
+                         <SearchBar onChange={this.updateSearchText} onClick={this.Search} searchText={this.state.searchText} placeholder="Search" />
                         
                         <input type="submit"
                             value="Add Team"
                             className="btn btn-primary"
                             onClick={this.setRedirect} />
 
-                        <TeamList teams={this.props.teams} onHandleClick={this.handleDelete} />
+                        <TeamList teams={this.props.teams} 
+                        onHandleClick={this.handleDelete} />
                     </div>
 
 

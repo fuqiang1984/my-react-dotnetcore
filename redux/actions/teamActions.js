@@ -4,15 +4,18 @@ export function teamsFetchData(teamsResourceParameters) {
     return {
         type: types.TEAMS_LOAD,
         payload: {
-            request:{
+            request: {
                 //application/vnd.marvin.hateoas+json
                 method: 'GET',
                 headers: {
                     // advancedsurveyRec
-                    'Accept' : "application/vnd.marvin.hateoas+json"
-                    
+                    'Accept': "application/vnd.marvin.hateoas+json"
+
                 },
-                url:'teams' + '?PageNumber=' + teamsResourceParameters.PageNumber
+                url: 'teams' + '?PageNumber=' + teamsResourceParameters.PageNumber
+                    + (typeof teamsResourceParameters.searchQuery === 'undefined' 
+                    || teamsResourceParameters.searchQuery===""?"":'&searchQuery=' 
+                    + teamsResourceParameters.searchQuery)
             }
         }
     }
@@ -25,31 +28,31 @@ export function teamSave(team) {
         payload: {
             request: {
                 method: 'PUT', // UPDATE RECORD
-                url: 'teams'+'/'+team.Id,
-                data: team, 
+                url: 'teams' + '/' + team.Id,
+                data: team,
                 headers: {
                     // advancedsurveyRec
-                    'Content-Type' : "application/json"
-                    
-                 },
+                    'Content-Type': "application/json"
+
+                },
             }
         }
-    }:
-    {
-        type: types.TEAM_CREATE,
-        payload: {
-            request: {
-                method: 'POST', // UPDATE RECORD
-                url: 'teams',
-                data: team, 
-                headers: {
-                    // advancedsurveyRec
-                    'Content-Type' : "application/vnd.marvin.author.full+json"
-                    
-                 },
+    } :
+        {
+            type: types.TEAM_CREATE,
+            payload: {
+                request: {
+                    method: 'POST', // UPDATE RECORD
+                    url: 'teams',
+                    data: team,
+                    headers: {
+                        // advancedsurveyRec
+                        'Content-Type': "application/vnd.marvin.author.full+json"
+
+                    },
+                }
             }
         }
-    }    
 }
 
 export function teamDelete(href) {
@@ -61,5 +64,5 @@ export function teamDelete(href) {
                 url: href
             }
         }
-    }    
+    }
 }
