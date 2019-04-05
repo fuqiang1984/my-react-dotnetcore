@@ -15,15 +15,20 @@ import { teamDelete } from ".././../../redux/actions/teamActions";
 
 class TeamsPage extends Component {
 
+    
     constructor(props) {
         super(props);
         this.state = {
             isLoading: true,
             appData: [],
             redirect: false,
-            searchText:''
+            searchText:'',
+            checkedData:[]
 
         };
+        this.checkedData=[];
+     
+        
         //this.redirectToAddTeamPage=this.redirectToAddTeamPage.bind(this);
     }
 
@@ -47,7 +52,7 @@ class TeamsPage extends Component {
 
     onRangeClick = (event) => {
         const field = event.target.text;
-        let teamsResourceParameters = { PageNumber: field };
+        let teamsResourceParameters = { PageNumber: field,searchQuery:this.state.searchText };
         this.props.teamsFetchData(teamsResourceParameters);
 
     }
@@ -55,7 +60,7 @@ class TeamsPage extends Component {
 
     GoPrev = () => {
         event.preventDefault();
-        let teamsResourceParameters = { PageNumber: this.props.x_pagination.currentPage - 1 };
+        let teamsResourceParameters = { PageNumber: this.props.x_pagination.currentPage - 1,searchQuery:this.state.searchText };
         this.props.teamsFetchData(teamsResourceParameters);
 
 
@@ -64,7 +69,7 @@ class TeamsPage extends Component {
 
     GoNext = (link) => {
         event.preventDefault();
-        let teamsResourceParameters = { PageNumber: this.props.x_pagination.currentPage + 1 };
+        let teamsResourceParameters = { PageNumber: this.props.x_pagination.currentPage + 1,searchQuery:this.state.searchText };
         this.props.teamsFetchData(teamsResourceParameters);
 
     }
@@ -78,7 +83,27 @@ class TeamsPage extends Component {
     handleCheckboxchange=(event)=>{
 
         const field = event.target.id;
-        console.log(field);
+        const checked=event.target.checked;
+        
+        if(checked){
+            console.log("push");
+            this.checkedData.push(field);
+        }else{
+            console.log("filter");
+
+            for( let i = 0; i < this.checkedData.length; i++){ 
+                if ( this.checkedData[i] === field) {
+                    this.checkedData.splice(i, 1); 
+                  i--;
+                }
+             }
+
+           // this.checkedData.filter(id=>id!=field);
+        }
+       
+        //this.checkedData=checked?this.checkedData.push(field):this.checkedData.filter(id=>id!=field);
+        
+        console.log(this.checkedData);
     }
 
     handleDelete = (team) => {
