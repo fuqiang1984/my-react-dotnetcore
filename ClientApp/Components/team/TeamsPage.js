@@ -12,6 +12,7 @@ import SearchBar from '../common/SearchBar';
 import { connect } from 'react-redux';
 import { teamsFetchData } from ".././../../redux/actions/teamActions";
 import { teamDelete } from ".././../../redux/actions/teamActions";
+import arrayRemove from '../utils/Helper';
 
 class TeamsPage extends Component {
 
@@ -23,7 +24,8 @@ class TeamsPage extends Component {
             appData: [],
             redirect: false,
             searchText:'',
-            checkedData:[]
+            hasChecked:false
+           
 
         };
         this.checkedData=[];
@@ -89,18 +91,17 @@ class TeamsPage extends Component {
             console.log("push");
             this.checkedData.push(field);
         }else{
-            console.log("filter");
-
-            for( let i = 0; i < this.checkedData.length; i++){ 
-                if ( this.checkedData[i] === field) {
-                    this.checkedData.splice(i, 1); 
-                  i--;
-                }
-             }
+             console.log("filter");
+             arrayRemove(this.checkedData,field);
 
            // this.checkedData.filter(id=>id!=field);
         }
-       
+         
+        if(this.checkedData.length===0){
+            this.setState({hasChecked:false});
+        }else if(this.checkedData.length===1 && checked===true){
+            this.setState({hasChecked:true});
+        }
         //this.checkedData=checked?this.checkedData.push(field):this.checkedData.filter(id=>id!=field);
         
         console.log(this.checkedData);
@@ -171,6 +172,11 @@ class TeamsPage extends Component {
                         
                         <input type="submit"
                             value="Add Team"
+                            className="btn btn-primary"
+                            onClick={this.setRedirect} />
+
+                        <input type={this.state.hasChecked?"submit":"hidden"}
+                            value="Delete Team"
                             className="btn btn-primary"
                             onClick={this.setRedirect} />
 
