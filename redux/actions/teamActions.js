@@ -66,3 +66,16 @@ export function teamDelete(href) {
         }
     }
 }
+
+export function teamDeleteCollection(teams) {
+   // let myJsonString = JSON.stringify(teams);
+    return {
+        type: types.TEAM_DELETE_COLLECTION,
+        payload: {
+            request: {
+                method: 'DELETE', // UPDATE RECORD
+                url: 'teams' +'\\{'+teams.join(',')+'\\}'
+            }
+        }
+    }
+}

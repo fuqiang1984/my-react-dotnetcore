@@ -11,7 +11,7 @@ import SearchBar from '../common/SearchBar';
 
 import { connect } from 'react-redux';
 import { teamsFetchData } from ".././../../redux/actions/teamActions";
-import { teamDelete } from ".././../../redux/actions/teamActions";
+import { teamDelete,teamDeleteCollection } from ".././../../redux/actions/teamActions";
 import arrayRemove from '../utils/Helper';
 
 class TeamsPage extends Component {
@@ -130,6 +130,14 @@ class TeamsPage extends Component {
 
     }
 
+    handleDeleteMultiple=()=>{
+         this.props.teamDeleteCollection(this.checkedData).then(() => this.props.teamsFetchData(teamsResourceParameters))
+            .catch((response) => {
+                //handle form errors
+            });
+
+    }
+
     updateSearchText=(event)=>{
         const field = event.target.value;
         console.log(field);
@@ -178,7 +186,7 @@ class TeamsPage extends Component {
                         <input type={this.state.hasChecked?"submit":"hidden"}
                             value="Delete Team"
                             className="btn btn-primary"
-                            onClick={this.setRedirect} />
+                            onClick={this.handleDeleteMultiple} />
 
                         <TeamList onCheckboxchange={this.handleCheckboxchange} teams={this.props.teams} onHandleClick={this.handleDelete} />
                     </div>
@@ -211,6 +219,6 @@ const mapStateToProps = (state) => {
 
 
 export default connect(mapStateToProps,
-    { teamsFetchData, teamDelete })(TeamsPage)
+    { teamsFetchData, teamDelete, teamDeleteCollection })(TeamsPage)
 
 
