@@ -122,7 +122,14 @@ class TeamsPage extends Component {
         var newlink = link.href.replace(restUrl, '');
 
         let teamsResourceParameters = { PageNumber: this.props.x_pagination.currentPage };
-        this.props.teamDelete(newlink).then(() => this.props.teamsFetchData(teamsResourceParameters))
+        this.props.teamDelete(newlink).then(
+                () => {
+
+                    this.props.teamsFetchData(teamsResourceParameters);
+                    
+                }
+               
+            )
             .catch((response) => {
                 //handle form errors
             });
@@ -131,7 +138,15 @@ class TeamsPage extends Component {
     }
 
     handleDeleteMultiple=()=>{
-         this.props.teamDeleteCollection(this.checkedData).then(() => this.props.teamsFetchData(teamsResourceParameters))
+         let teamsResourceParameters = { PageNumber: this.props.x_pagination.currentPage,searchQuery:this.state.searchText };
+         this.props.teamDeleteCollection(this.checkedData).then(() => {
+                     this.checkedData=[];
+                     this.props.teamsFetchData(teamsResourceParameters);
+
+
+               }).then(()=>this.setState({hasChecked:false}))
+
+            
             .catch((response) => {
                 //handle form errors
             });

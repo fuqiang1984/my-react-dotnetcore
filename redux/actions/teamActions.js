@@ -74,7 +74,7 @@ export function teamDeleteCollection(teams) {
         payload: {
             request: {
                 method: 'DELETE', // UPDATE RECORD
-                url: 'teams' +'\\{'+teams.join(',')+'\\}'
+                url: 'authorcollections' + '/' + '('+teams.join(',')+')'
             }
         }
     }
