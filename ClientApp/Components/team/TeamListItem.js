@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import DeleteButton from '../common/DeleteButton'
 
-export default function TeamListItem({team,onHandleClick,onCheckboxchange}) {
+export default function TeamListItem({team,onCheckboxchange}) {
 
 
     return (
@@ -18,9 +18,10 @@ export default function TeamListItem({team,onHandleClick,onCheckboxchange}) {
             <td>{team.Id}</td>
             <td>{team.Id}</td>
             <td>{team.Id}</td>
-            <td><DeleteButton onHandleClick={onHandleClick} team={team} /></td>
+            
         </tr>
     );
+    //<td><DeleteButton onHandleClick={onHandleClick} team={team} /></td>
 }
 
 TeamListItem.propTypes = {

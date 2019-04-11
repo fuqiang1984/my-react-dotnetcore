@@ -12,8 +12,7 @@ export function teamReducer(state = {
 
        case types.TEAM_CREATE:{
             return Object.assign({}, state, {           
-                saving: true,
-                success:false
+                saving: true
             });
         }
 

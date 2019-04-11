@@ -11,8 +11,6 @@ export function teamsReducer(state = {
 
         case types.TEAMS_LOAD: {
             return Object.assign({}, state, {
-                isLoading: true,
-                hasErrored: false
             });
         }
         case types.TEAMS_LOAD_SUCCESS: {
@@ -32,6 +30,7 @@ export function teamsReducer(state = {
                 errorMessage: action.error.message
             });
         }
+        /*
 
         case types.TEAM_CREATE:{
             return Object.assign({}, state, {           
@@ -54,6 +53,7 @@ export function teamsReducer(state = {
             });
 
         }
+        */
 
         default:
             return state;

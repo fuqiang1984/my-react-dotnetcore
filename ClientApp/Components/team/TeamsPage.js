@@ -20,18 +20,12 @@ class TeamsPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isLoading: true,
-            appData: [],
             redirect: false,
             searchText:'',
             hasChecked:false
            
-
         };
         this.checkedData=[];
-     
-        
-        //this.redirectToAddTeamPage=this.redirectToAddTeamPage.bind(this);
     }
 
     setRedirect = () => {
@@ -39,6 +33,7 @@ class TeamsPage extends Component {
             redirect: true
         })
     }
+
     renderRedirect = () => {
         if (this.state.redirect) {
             return <Redirect to='/team' />
@@ -49,8 +44,9 @@ class TeamsPage extends Component {
         let pageNumber = this.props.x_pagination == null ? 1 : this.props.x_pagination.currentPage > 0 ? this.props.x_pagination.currentPage : 1;
         let teamsResourceParameters = { PageNumber: pageNumber,searchQuery:this.state.searchText };
         this.props.teamsFetchData(teamsResourceParameters);
-        console.log("didmount");
     }
+
+
 
     onRangeClick = (event) => {
         const field = event.target.text;
@@ -76,25 +72,15 @@ class TeamsPage extends Component {
 
     }
 
-    getLinkById = (links, method) => {
-        const link = links.filter(link => link.method == method);
-        if (link) return link[0]; //since filter returns an array, have to grab the first.
-        return null;
-    }
-
     handleCheckboxchange=(event)=>{
 
         const field = event.target.id;
         const checked=event.target.checked;
         
         if(checked){
-            console.log("push");
             this.checkedData.push(field);
         }else{
-             console.log("filter");
-             arrayRemove(this.checkedData,field);
-
-           // this.checkedData.filter(id=>id!=field);
+            arrayRemove(this.checkedData,field);
         }
          
         if(this.checkedData.length===0){
@@ -102,40 +88,9 @@ class TeamsPage extends Component {
         }else if(this.checkedData.length===1 && checked===true){
             this.setState({hasChecked:true});
         }
-        //this.checkedData=checked?this.checkedData.push(field):this.checkedData.filter(id=>id!=field);
-        
-        console.log(this.checkedData);
     }
 
-    handleDelete = (team) => {
-        var link = null;
-        console.log(team.Id);
-        if (team.links.length > 0) {
-            link = this.getLinkById(team.links, "DELETE");
-        }
-        //console.log(link);
-        const production = process.env.NODE_ENV &&
-            process.env.NODE_ENV === "production";
-        const restUrl = production ?
-            process.env.PROD_RESTURL :
-            process.env.JSONSERVER_RESTURL;
-        var newlink = link.href.replace(restUrl, '');
-
-        let teamsResourceParameters = { PageNumber: this.props.x_pagination.currentPage };
-        this.props.teamDelete(newlink).then(
-                () => {
-
-                    this.props.teamsFetchData(teamsResourceParameters);
-                    
-                }
-               
-            )
-            .catch((response) => {
-                //handle form errors
-            });
-
-
-    }
+    
 
     handleDeleteMultiple=()=>{
          let teamsResourceParameters = { PageNumber: this.props.x_pagination.currentPage,searchQuery:this.state.searchText };
@@ -160,9 +115,6 @@ class TeamsPage extends Component {
         this.setState({
             searchText:field
         });
-        //let team = Object.assign({}, this.state.team);
-        //team[field] = event.target.value;
-        //return this.setState({team: team});
     }
 
     Search=(event)=>{
@@ -172,9 +124,7 @@ class TeamsPage extends Component {
 
     render() {
         console.log("Begin render")
-        console.log("search text is:" +this.state.searchText);
-        //let filteredteams=this.state.searchText===""?this.props.teams:this.props.teams.filter(team=>team.Name.includes(this.state.searchText));
-        //debugger;
+
         if (this.props.isLoading) {
             return <span><i>Loading...</i></span>
         }
@@ -182,9 +132,7 @@ class TeamsPage extends Component {
             return <span><b>Failed to load data: {this.props.errorMessage}</b></span>
         }
         else {
-            //  <TeamList teams={this.state.searchText===""?this.props.teams:
-            //            this.props.teams.filter(team=>team.Name.includes(this.state.searchText))} 
-           //             onHandleClick={this.handleDelete} />
+            
             return (
                 <React.Fragment>
                     <div>
@@ -203,7 +151,7 @@ class TeamsPage extends Component {
                             className="btn btn-primary"
                             onClick={this.handleDeleteMultiple} />
 
-                        <TeamList onCheckboxchange={this.handleCheckboxchange} teams={this.props.teams} onHandleClick={this.handleDelete} />
+                        <TeamList onCheckboxchange={this.handleCheckboxchange} teams={this.props.teams} />
                     </div>
 
 
@@ -224,11 +172,8 @@ const mapStateToProps = (state) => {
 
     return {
         teams: state.teamsReducer.data,       // to match this.props.speakers:reducers.state.speakers.data
-        links: state.teamsReducer.links,
-        hasErrored: state.teamsReducer.hasErrored,
         isLoading: state.teamsReducer.isLoading,
-        x_pagination: state.teamsReducer.x_pagination,
-        errorMessage: state.teamsReducer.errorMessage
+        x_pagination: state.teamsReducer.x_pagination
     };
 };
 
