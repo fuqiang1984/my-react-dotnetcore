@@ -173,17 +173,7 @@ ListPage.propTypes = {};
 ListPage.defaultProps = {};
 
 
-const mapStateToProps = (state) => {
 
-    return {
-        teams: state.teamsReducer.data,       // to match this.props.speakers:reducers.state.speakers.data
-        isLoading: state.teamsReducer.isLoading,
-        x_pagination: state.teamsReducer.x_pagination
-    };
-};
-
-
-export default connect(mapStateToProps,
-    { teamsFetchData, teamDelete, teamDeleteCollection })(ListPage)
+export default ListPage;
 
 

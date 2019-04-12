@@ -25,7 +25,7 @@ class TeamsPage extends Component {
        
             return (
                 <React.Fragment>
-                <ListPage />
+                <ListPage {...this.props}/>
                 </React.Fragment>
 
             );
