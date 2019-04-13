@@ -1,22 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
-//import TeamList from './TeamList';
-
-//import TeamGrid from './TeamGrid';
-//import TeamGridWithSort from './TeamGridWithSort';
 import { Redirect } from 'react-router-dom';
 import Pagination from './Pagination';
 import SearchBar from './SearchBar';
 import DataList from './DataList'
 
-
-
-//import axios from 'axios';
-
-import { connect } from 'react-redux';
-import { teamsFetchData } from ".././../../redux/actions/teamActions";
-import { teamDelete, teamDeleteCollection } from ".././../../redux/actions/teamActions";
 import arrayRemove from '../utils/Helper';
 
 
@@ -156,7 +144,7 @@ class ListPage extends Component {
                             className="btn btn-primary"
                             onClick={this.handleDeleteMultiple} />
 
-                        <DataList onCheckboxchange={this.handleCheckboxchange} data={this.props.teams} />
+                        <DataList columns={this.props.columns} onCheckboxchange={this.handleCheckboxchange} data={this.props.data} />
                     </div>
 
 

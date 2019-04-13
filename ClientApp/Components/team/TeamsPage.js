@@ -18,14 +18,29 @@ class TeamsPage extends Component {
             hasChecked: false
 
         };
-        this.checkedData = [];
+        this.columns=[
+            {
+              Header: "Name",
+              accessor: "Name"
+            },
+            {
+              Header: "Age",
+              
+              accessor: "Age"
+            },
+            {
+              Header: "Genre",
+              accessor: "Genre"
+            }
+            
+          ];
     }  
 
     render() {
        
             return (
                 <React.Fragment>
-                <ListPage {...this.props}/>
+                <ListPage columns={this.columns} {...this.props}/>
                 </React.Fragment>
 
             );
@@ -41,7 +56,7 @@ TeamsPage.defaultProps = {};
 const mapStateToProps = (state) => {
 
     return {
-        teams: state.teamsReducer.data,       // to match this.props.speakers:reducers.state.speakers.data
+        data: state.teamsReducer.data,       // to match this.props.speakers:reducers.state.speakers.data
         isLoading: state.teamsReducer.isLoading,
         x_pagination: state.teamsReducer.x_pagination
     };
