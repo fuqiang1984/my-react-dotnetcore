@@ -16,7 +16,8 @@ class ListPage extends Component {
         this.state = {
             redirect: false,
             searchText: '',
-            hasChecked: false
+            hasChecked: false,
+            checkAll:false
 
         };
         this.checkedData = [];
@@ -68,13 +69,15 @@ class ListPage extends Component {
 
     handleCheckboxchange = (event) => {
 
-        const field = event.target.id;
-        const checked = event.target.checked;
+        //const field = event.target.id;
+        //const checked = event.target.checked;
+        const { checked,id } = event.target;
+        
 
         if (checked) {
-            this.checkedData.push(field);
+            this.checkedData.push(id);
         } else {
-            arrayRemove(this.checkedData, field);
+            arrayRemove(this.checkedData, id);
         }
 
         if (this.checkedData.length === 0) {
@@ -82,6 +85,22 @@ class ListPage extends Component {
         } else if (this.checkedData.length === 1 && checked === true) {
             this.setState({ hasChecked: true });
         }
+    }
+
+    handleCheckall=(event)=>{
+       //const field = event.target.id;
+       //const checked = event.target.checked;
+
+       const { checked } = event.target;
+       //console.log(value);
+       //console.log(checked);
+       if (checked) {
+           // this.checkedData.push(field);
+           this.setState({checkAll:true});
+        } else {
+           this.setState({checkAll:false});
+        }
+
     }
 
 
@@ -144,7 +163,7 @@ class ListPage extends Component {
                             className="btn btn-primary"
                             onClick={this.handleDeleteMultiple} />
 
-                        <DataList columns={this.props.columns} onCheckboxchange={this.handleCheckboxchange} data={this.props.data} />
+                        <DataList checkAll={this.state.checkAll} onCheckall={this.handleCheckall} columns={this.props.columns} onCheckboxchange={this.handleCheckboxchange} data={this.props.data} />
                     </div>
 
 

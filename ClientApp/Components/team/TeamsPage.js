@@ -19,6 +19,7 @@ class TeamsPage extends Component {
 
         };
         this.columns=[
+            
             {
               Header: "Name",
               accessor: "Name"
