@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 //import DeleteButton from '../common/DeleteButton'
 
-export default function DataListItem({checkAll,columns,item,onCheckboxchange}) {
+export default function DataListItem({checkAll,columns,item,onCheckboxchange,selected}) {
 
 
     return (
@@ -11,7 +11,7 @@ export default function DataListItem({checkAll,columns,item,onCheckboxchange}) {
             <td><input
               type="checkbox"
               id={item.Id}
-              
+              checked={selected[item.Id]===true}
               onChange={onCheckboxchange}
             /></td>
 

@@ -17,8 +17,9 @@ class ListPage extends Component {
             redirect: false,
             searchText: '',
             hasChecked: false,
-            checkAll:false
-
+            checkAll:false,
+            selected: {}, 
+            selectAll: 0
         };
         this.checkedData = [];
     }
@@ -71,8 +72,19 @@ class ListPage extends Component {
 
         //const field = event.target.id;
         //const checked = event.target.checked;
+        //console.log("123");
+
+
         const { checked,id } = event.target;
-        
+
+        const newSelected = Object.assign({}, this.state.selected);
+        newSelected[id] = !this.state.selected[id];
+        this.setState({
+            selected: newSelected,
+            selectAll: 2
+        });
+
+        /*
 
         if (checked) {
             this.checkedData.push(id);
@@ -85,11 +97,29 @@ class ListPage extends Component {
         } else if (this.checkedData.length === 1 && checked === true) {
             this.setState({ hasChecked: true });
         }
+        */
     }
 
     handleCheckall=(event)=>{
+
+
+        let newSelected = {};
+
+        if (this.state.selectAll === 0) {
+            this.props.data.forEach(x => {
+                newSelected[x.Id] = true;
+            });
+        }
+
+        this.setState({
+            selected: newSelected,
+            selectAll: this.state.selectAll === 0 ? 1 : 0
+        });
        //const field = event.target.id;
        //const checked = event.target.checked;
+
+
+       /*
 
        const { checked } = event.target;
        //console.log(value);
@@ -101,13 +131,18 @@ class ListPage extends Component {
            this.setState({checkAll:false});
         }
 
+        */
+
     }
 
 
 
     handleDeleteMultiple = () => {
         let teamsResourceParameters = { PageNumber: this.props.x_pagination.currentPage, searchQuery: this.state.searchText };
-        this.props.teamDeleteCollection(this.checkedData).then(() => {
+        
+        
+
+        this.props.teamDeleteCollection(Object.keys(this.state.selected).filter(k=>this.state.selected[k]===true)).then(() => {
             this.checkedData = [];
             this.props.teamsFetchData(teamsResourceParameters);
 
@@ -137,6 +172,7 @@ class ListPage extends Component {
 
     render() {
         console.log("Begin render")
+        //console.log(this.state.selected.filter(s=>s.value==true));
 
         if (this.props.isLoading) {
             return <span><i>Loading...</i></span>
@@ -158,12 +194,12 @@ class ListPage extends Component {
                             className="btn btn-primary"
                             onClick={this.setRedirect} />
 
-                        <input type={this.state.hasChecked?"submit":"hidden"}
+                        <input type={Object.values(this.state.selected).filter(v=>v===true).length>0?"submit":"hidden"}
                             value="Delete Team"
                             className="btn btn-primary"
                             onClick={this.handleDeleteMultiple} />
 
-                        <DataList checkAll={this.state.checkAll} onCheckall={this.handleCheckall} columns={this.props.columns} onCheckboxchange={this.handleCheckboxchange} data={this.props.data} />
+                        <DataList selected={this.state.selected}  checkAll={this.state.selectAll} onCheckall={this.handleCheckall} columns={this.props.columns} onCheckboxchange={this.handleCheckboxchange} data={this.props.data} />
                     </div>
 
 

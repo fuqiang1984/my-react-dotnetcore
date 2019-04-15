@@ -16,10 +16,12 @@ class TeamsPage extends Component {
             redirect: false,
             searchText: '',
             hasChecked: false
+            
 
         };
+
         this.columns=[
-            
+
             {
               Header: "Name",
               accessor: "Name"

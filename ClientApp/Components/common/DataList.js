@@ -2,7 +2,8 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import DataListItem from './DataListItem';
 
-export default function DataList({ columns,data,onPrev,onNext,onCheckboxchange,onCheckall,checkAll }) {
+export default function DataList({ columns,data,onPrev,onNext,onCheckboxchange,onCheckall,checkAll,selected }) {
+  //console.log(checkAll);
   return (
       <div>
         <table className="table">
@@ -10,8 +11,14 @@ export default function DataList({ columns,data,onPrev,onNext,onCheckboxchange,o
                 <tr>
                 <th><input
               type="checkbox"
-             
+              checked={checkAll===1}
               onChange={onCheckall}
+              ref={input => {
+                    if (input) {
+                      input.indeterminate = checkAll === 2;
+                    }
+                  }}
+
             /></th>
                 {columns.map(column=><th>{column.Header}</th>)}
                     
@@ -20,7 +27,7 @@ export default function DataList({ columns,data,onPrev,onNext,onCheckboxchange,o
             </thead>
             <tbody>
                 {data.map(item =>
-                <DataListItem  checkAll={checkAll} columns={columns} onCheckboxchange={onCheckboxchange} key={item.Id} item={item}/>
+                <DataListItem  selected={selected} columns={columns} onCheckboxchange={onCheckboxchange} key={item.Id} item={item}/>
                 )}
                
             </tbody>
