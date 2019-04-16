@@ -6,19 +6,14 @@ import { teamDelete, teamDeleteCollection } from ".././../../redux/actions/teamA
 
 import ListPage from '../common/ListPage';
 
+import SurveyEditor from '../common/SurveyEditor';
+
 
 class TeamsPage extends Component {
 
 
     constructor(props) {
         super(props);
-        this.state = {
-            redirect: false,
-            searchText: '',
-            hasChecked: false
-            
-
-        };
 
         this.columns=[
 
@@ -28,7 +23,6 @@ class TeamsPage extends Component {
             },
             {
               Header: "Age",
-              
               accessor: "Age"
             },
             {
@@ -43,7 +37,15 @@ class TeamsPage extends Component {
        
             return (
                 <React.Fragment>
-                <ListPage columns={this.columns} {...this.props}/>
+                <ListPage columns={this.columns} fetchData={this.props.teamsFetchData} 
+                x_pagination={this.props.x_pagination} data={this.props.data}
+                isLoading={this.props.isLoading}
+                hasErrored={this.props.hasErrored}
+                errorMessage={this.props.errorMessage}
+                teamDeleteCollection={this.props.teamDeleteCollection}
+                />
+
+                <SurveyEditor />
                 </React.Fragment>
 
             );

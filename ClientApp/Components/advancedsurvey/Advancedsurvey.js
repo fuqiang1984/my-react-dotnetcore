@@ -18,8 +18,8 @@ class Advancedsurvey extends Component {
       {
         elements: [
           {
-            type: "barrating",
-            name: "barrating1",
+            type: "rating",
+            name: "barrating",
             ratingTheme: "css-stars",
             title: "Please rate the movie you've just watched",
             choices: ["1", "2", "3", "4", "5"]

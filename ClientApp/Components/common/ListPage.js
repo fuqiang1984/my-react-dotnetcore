@@ -39,7 +39,7 @@ class ListPage extends Component {
     componentDidMount() {
         let pageNumber = this.props.x_pagination == null ? 1 : this.props.x_pagination.currentPage > 0 ? this.props.x_pagination.currentPage : 1;
         let teamsResourceParameters = { PageNumber: pageNumber, searchQuery: this.state.searchText };
-        this.props.teamsFetchData(teamsResourceParameters);
+        this.props.fetchData(teamsResourceParameters);
     }
 
 
@@ -47,7 +47,7 @@ class ListPage extends Component {
     onRangeClick = (event) => {
         const field = event.target.text;
         let teamsResourceParameters = { PageNumber: field, searchQuery: this.state.searchText };
-        this.props.teamsFetchData(teamsResourceParameters);
+        this.props.fetchData(teamsResourceParameters);
 
     }
 
@@ -55,7 +55,7 @@ class ListPage extends Component {
     GoPrev = () => {
         event.preventDefault();
         let teamsResourceParameters = { PageNumber: this.props.x_pagination.currentPage - 1, searchQuery: this.state.searchText };
-        this.props.teamsFetchData(teamsResourceParameters);
+        this.props.fetchData(teamsResourceParameters);
 
 
     }
@@ -64,16 +64,11 @@ class ListPage extends Component {
     GoNext = (link) => {
         event.preventDefault();
         let teamsResourceParameters = { PageNumber: this.props.x_pagination.currentPage + 1, searchQuery: this.state.searchText };
-        this.props.teamsFetchData(teamsResourceParameters);
+        this.props.fetchData(teamsResourceParameters);
 
     }
 
     handleCheckboxchange = (event) => {
-
-        //const field = event.target.id;
-        //const checked = event.target.checked;
-        //console.log("123");
-
 
         const { checked,id } = event.target;
 
@@ -84,20 +79,6 @@ class ListPage extends Component {
             selectAll: 2
         });
 
-        /*
-
-        if (checked) {
-            this.checkedData.push(id);
-        } else {
-            arrayRemove(this.checkedData, id);
-        }
-
-        if (this.checkedData.length === 0) {
-            this.setState({ hasChecked: false });
-        } else if (this.checkedData.length === 1 && checked === true) {
-            this.setState({ hasChecked: true });
-        }
-        */
     }
 
     handleCheckall=(event)=>{
@@ -115,23 +96,6 @@ class ListPage extends Component {
             selected: newSelected,
             selectAll: this.state.selectAll === 0 ? 1 : 0
         });
-       //const field = event.target.id;
-       //const checked = event.target.checked;
-
-
-       /*
-
-       const { checked } = event.target;
-       //console.log(value);
-       //console.log(checked);
-       if (checked) {
-           // this.checkedData.push(field);
-           this.setState({checkAll:true});
-        } else {
-           this.setState({checkAll:false});
-        }
-
-        */
 
     }
 
@@ -144,7 +108,7 @@ class ListPage extends Component {
 
         this.props.teamDeleteCollection(Object.keys(this.state.selected).filter(k=>this.state.selected[k]===true)).then(() => {
             this.checkedData = [];
-            this.props.teamsFetchData(teamsResourceParameters);
+            this.props.fetchData(teamsResourceParameters);
 
 
         }).then(() => this.setState({ hasChecked: false }))
@@ -167,7 +131,7 @@ class ListPage extends Component {
 
     Search = (event) => {
         let teamsResourceParameters = { PageNumber: 1, searchQuery: this.state.searchText };
-        this.props.teamsFetchData(teamsResourceParameters);
+        this.props.fetchData(teamsResourceParameters);
     }
 
     render() {
