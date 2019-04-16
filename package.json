@@ -18,7 +18,7 @@
     "prod:deploy": "npm-run-all --serial prod:bundlefordeploy prod:cleanwwwroot prod:copytowwwroot",
     "jsonserver": "nodemon jsonserver.js",
     "start": "npm-run-all --parallel start:client jsonserver",
-    "build-css": "node-sass-chokidar --source-comments  --include-path ./ClientApp/sass --include-path ./node_modules ClientApp/ -o public/"
+    "build-css": "node-sass-chokidar --source-comments    --include-path ./ClientApp/sass --include-path ./node_modules ClientApp/ -o public/"
   },
   "keywords": [],
   "author": "",
@@ -38,7 +38,6 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
-    "bootstrap": "3.3.7",
     "cpx": "^1.5.0",
     "dotenv": "^6.2.0",
     "dotenv-webpack": "^1.7.0",
@@ -72,6 +71,7 @@
     "webpack-merge": "^4.2.1",
     "webpack-node-externals": "^1.7.2",
     "surveyjs-editor": "latest",
-    "surveyjs-widgets": "latest"
+    "surveyjs-widgets": "latest",
+    "bootstrap": "4.0.0-alpha.6"
   }
 }
