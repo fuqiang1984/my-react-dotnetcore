@@ -11,6 +11,7 @@ import Login from "./Components/common/Login";
 import RouteNotFound from "./RouteNotFound";
 import TeamsPage from './Components/team/TeamsPage';
 import ManageTeamPage from './Components/team/ManageTeamPage';
+import SurveyCreator from './Components/surveycreator/SurveyCreator'
 
 
 
@@ -35,6 +36,7 @@ class Routes extends Component {
                     <Route exact path="/speakers" component={Speakers}/>
                     <Route exact path="/surveys" component={Surveys}/>
                     <Route exact path="/advancedsurvey" component={Advancedsurvey}/>
+                    <Route exact path="/surveycreator" component={SurveyCreator}/>
                     <Route exact path="/login" component={Login}/>
                     <Route exact path="/mytest123" component={Mytest}/>
                     <Route exact path="/teams" component={TeamsPage}/>

@@ -13698,38 +13698,6 @@ body {
   color: #25aae2;
   font-weight: normal; }
 
-/* line 3, ClientApp/sass/components/_form-control.scss */
-.form-control {
-  font-size: 1rem;
-  border-radius: 0;
-  border-top-right-radius: 0.9375rem;
-  border-bottom-left-radius: 0.9375rem;
-  padding: 0.625rem 0.9375rem;
-  outline: none; }
-  /* line 11, ClientApp/sass/components/_form-control.scss */
-  .form-control.is-invalid {
-    border-color: #d1493c; }
-  /* line 15, ClientApp/sass/components/_form-control.scss */
-  .form-control--icon {
-    padding-right: 3.5rem; }
-  /* line 19, ClientApp/sass/components/_form-control.scss */
-  .form-control--select {
-    height: 42px; }
-  /* line 23, ClientApp/sass/components/_form-control.scss */
-  .form-control ~ .input-group-addon {
-    transition: border-color 0.2s; }
-  /* line 27, ClientApp/sass/components/_form-control.scss */
-  .form-control:focus ~ .input-group-addon {
-    border-color: #96d6f1; }
-
-/* line 32, ClientApp/sass/components/_form-control.scss */
-.form-control--icon ~ .form-control__icon {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  right: 30px;
-  color: #BCBBBB; }
-
 /* line 3, ClientApp/sass/components/_form-check-input.scss */
 .form-check-input--customised-checkbox {
   appearance: none;
