@@ -45,7 +45,7 @@ class TeamsPage extends Component {
                 teamDeleteCollection={this.props.teamDeleteCollection}
                 />
 
-                <SurveyEditor />
+               
                 </React.Fragment>
 
             );

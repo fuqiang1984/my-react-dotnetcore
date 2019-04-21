@@ -5,11 +5,19 @@ import SurveyEditor from '../common/SurveyEditor';
 
 class SurveyCreator extends Component {
 
+
+
+	sendDataToServer=(text)=>{
+		console.log("123"+text);
+
+
+	}
+
 	render() {
        
             return (
                 <React.Fragment>
-                <SurveyEditor />
+                <SurveyEditor saveMySurvey={this.sendDataToServer}/>
                 </React.Fragment>
 
             );

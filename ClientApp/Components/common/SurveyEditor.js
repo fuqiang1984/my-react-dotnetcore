@@ -32,11 +32,13 @@ class SurveyEditor extends Component {
     );
     this.editor.saveSurveyFunc = this.saveMySurvey;
   }
+
   render() {
-    return <div id="surveyEditorContainer" />;
+    return <div id="surveyEditorContainer"/>;
   }
   saveMySurvey = () => {
-    console.log(JSON.stringify(this.editor.text));
+    //console.log(JSON.stringify(this.editor.text));
+    this.props.saveMySurvey(this.editor.text);
   };
 }
 
