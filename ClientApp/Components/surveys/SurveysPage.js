@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { teamsFetchData } from ".././../../redux/actions/teamActions";
+import { surveyFetchData } from ".././../../redux/actions/surveyActions";
 import { teamDelete, teamDeleteCollection } from ".././../../redux/actions/teamActions";
 
 import ListPage from '../common/ListPage';
 
 
-class TeamsPage extends Component {
+class SurveysPage extends Component {
 
 
     constructor(props) {
@@ -52,8 +52,8 @@ class TeamsPage extends Component {
     }
 }
 
-TeamsPage.propTypes = {};
-TeamsPage.defaultProps = {};
+SurveysPage.propTypes = {};
+SurveysPage.defaultProps = {};
 
 
 const mapStateToProps = (state) => {
@@ -67,6 +67,6 @@ const mapStateToProps = (state) => {
 
 
 export default connect(mapStateToProps,
-    { teamsFetchData, teamDelete, teamDeleteCollection })(TeamsPage)
+    { teamsFetchData, teamDelete, teamDeleteCollection })(SurveysPage)
 
 

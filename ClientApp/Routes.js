@@ -4,14 +4,14 @@ import {Route, Switch} from 'react-router-dom';
 import Home from "./Components/home/Home";
 import Speakers from "./Components/speakers/Speakers";
 
-import Surveys from "./Components/surveys/Surveys";
+import Surveys from "./Components/quiz/Surveys";
 import Advancedsurvey from "./Components/advancedsurvey/Advancedsurvey";
 import Mytest from "./Components/mytest/Mytest";
 import Login from "./Components/common/Login";
 import RouteNotFound from "./RouteNotFound";
 import TeamsPage from './Components/team/TeamsPage';
 import ManageTeamPage from './Components/team/ManageTeamPage';
-import SurveyCreator from './Components/surveycreator/SurveyCreator'
+import SurveyCreator from './Components/surveys/SurveyCreator'
 
 
 

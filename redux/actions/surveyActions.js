@@ -11,6 +11,27 @@ export function surveyFetchData() {
     }
 }
 
+export function surveysFetchData(params) {
+    return {
+        type: types.TEAMS_LOAD,
+        payload: {
+            request: {
+               
+                method: 'GET',
+                headers: {
+                    // advancedsurveyRec
+                    'Accept': "application/vnd.marvin.hateoas+json"
+
+                },
+                url: 'survey' + '?PageNumber=' + params.PageNumber
+                    + (typeof params.searchQuery === 'undefined' 
+                    || params.searchQuery===""?"":'&searchQuery=' 
+                    + params.searchQuery)
+            }
+        }
+    }
+}
+
 
 export function saveSurvey(survey) {
     return {
@@ -28,4 +49,29 @@ export function saveSurvey(survey) {
             }
         }
     }    
+}
+
+export function surveyDelete(href) {
+    return {
+        type: types.TEAM_DELETE,
+        payload: {
+            request: {
+                method: 'DELETE', // UPDATE RECORD
+                url: href
+            }
+        }
+    }
+}
+
+export function DeleteCollection(teams) {
+   // let myJsonString = JSON.stringify(teams);
+    return {
+        type: types.TEAM_DELETE_COLLECTION,
+        payload: {
+            request: {
+                method: 'DELETE', // UPDATE RECORD
+                url: 'authorcollections' + '/' + '('+teams.join(',')+')'
+            }
+        }
+    }
 }

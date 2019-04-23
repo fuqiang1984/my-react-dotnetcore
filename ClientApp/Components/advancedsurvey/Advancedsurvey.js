@@ -228,7 +228,6 @@ class Advancedsurvey extends Component {
 
   //Define a callback methods on survey complete
   onComplete(survey, options) {
-    //Write survey results into database
     console.log("Survey results: " + JSON.stringify(survey.data));
     //this.props.advancedsurveyFetchData();
 
@@ -270,51 +269,6 @@ class Advancedsurvey extends Component {
 
     }
 
-
-    /*
-    if (this.props.isLoading) {
-       return <span><i>Loading...</i></span>
-    }
-    else if (this.props.hasErrored) {
-       return <span><b>Failed to load data: {this.props.errorMessage}</b></span>
-    }else {
-           console.log(JSON.stringify(this.props.survey.JSONDefinition));
-            //Create the model and pass it into react Survey component
-            //You may create survey model outside the render function and use it in your App or component
-            //The most model properties are reactive, on their change the component will change UI when needed.
-          if(this.props.submitted){
-              return (<div>{JSON.stringify(this.props.surveyReult)}</div>);
-          }
-         
-         var json=this.props.survey.JSONDefinition;
-         let jsonObject = JSON.parse(json);
-         //debugger;
-          var model = new Survey.Model(this.json);
-  
-          return (<Survey.Survey model={model} onComplete={(survey,options)=>{
-                console.log("Survey results: " + JSON.stringify(survey.data));
-                var surveyresult={
-                  SurveyId : "f74d6899-9ed2-4137-9876-66b070553f8f",
-                  JSONResult:JSON.stringify(survey.data)
-                }
-                  
-                this.props.updateAdvancedsurvey(surveyresult);
-  
-          }}/>);
-         
-    }
-   */
-    /*
-    //The alternative way. react Survey component will create survey model internally
-    return (<Survey.Survey json={this.json} onComplete={this.onComplete}/>);
-    */
-    //You may pass model properties directly into component or set it into model
-    // <Survey.Survey model={model} mode="display"/>
-    //or 
-    // model.mode="display"
-    // <Survey.Survey model={model}/>
-    // You may change model properties outside render function. 
-    //If needed react Survey Component will change its behavior and change UI.
   }
 }
 
