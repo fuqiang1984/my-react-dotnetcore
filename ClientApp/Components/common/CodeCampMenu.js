@@ -5,6 +5,8 @@ export default function CodeCampMenu() {
     
     return (
         <div>
+        
+        <div>
             <div className="header__open-button-mobile">
                 <a href="" className="js-open-main-menu">
                     <i className="fa fa-bars" />
@@ -72,6 +74,30 @@ export default function CodeCampMenu() {
                     </a>
                 </li>
             </ul>
+        </div>
+        <div>
+        <ul className="nav nav-tabs">
+  <li className="nav-item">
+    <a className="nav-link active" href="#"> <Link to="/teams">Teams</Link></a>
+  </li>
+  <li className="nav-item dropdown">
+    <a className="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+    <div className="dropdown-menu">
+      <a className="dropdown-item" href="#">Action</a>
+      <a className="dropdown-item" href="#">Another action</a>
+      <a className="dropdown-item" href="#">Something else here</a>
+      <div className="dropdown-divider"></div>
+      <a className="dropdown-item" href="#">Separated link</a>
+    </div>
+  </li>
+  <li className="nav-item">
+    <a className="nav-link" href="#">Link</a>
+  </li>
+  <li className="nav-item">
+    <a className="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+  </li>
+</ul>
+</div>
         </div>
     );
 }
