@@ -63,7 +63,7 @@ export function surveyDelete(href) {
     }
 }
 
-export function DeleteCollection(teams) {
+export function surveyDeleteCollection(teams) {
    // let myJsonString = JSON.stringify(teams);
     return {
         type: types.TEAM_DELETE_COLLECTION,

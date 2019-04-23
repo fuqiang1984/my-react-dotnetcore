@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import SurveyEditor from '../common/SurveyEditor';
-import { saveSurvey } from ".././../../redux/actions/surveyActions"; 
+import { saveSurvey } from "../../../redux/actions/surveyActions"; 
 
 class SurveyCreator extends Component {
 

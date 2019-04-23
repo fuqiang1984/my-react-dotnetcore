@@ -1,6 +1,6 @@
 import * as types from '../actions/actionTypes';
 
-export function survey(state = {
+export function surveyReducer(state = {
       isLoading: true,
       hasErrored: false,
       data: [],
@@ -28,6 +28,30 @@ export function survey(state = {
                 hasErrored: true,
                 errorMessage: action.error.message
             });
+        }
+
+        case types.SURVEY_CREATE:{
+            return Object.assign({}, state, {           
+                saving: true
+            });
+        }
+
+        case types.SURVEY_CREATE_SUCCESS:{
+            return Object.assign({}, state, {           
+                saving: false,
+                survey: action.payload.data,
+                success:true
+            });
+            
+        }
+        
+        case types.SURVEY_CREATE_FAIL:{
+            return Object.assign({}, state, {           
+                saving: false,
+                hasErrored:true,
+                errors:action.error.message
+            });
+
         }
 
         default:

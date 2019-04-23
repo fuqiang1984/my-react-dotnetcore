@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { surveyFetchData } from ".././../../redux/actions/surveyActions";
-import { teamDelete, teamDeleteCollection } from ".././../../redux/actions/teamActions";
+import { surveysFetchData } from ".././../../redux/actions/surveyActions";
+import { surveyDelete, surveyDeleteCollection } from ".././../../redux/actions/surveyActions";
 
 import ListPage from '../common/ListPage';
 
@@ -14,18 +14,9 @@ class SurveysPage extends Component {
         super(props);
 
         this.columns=[
-
             {
               Header: "Name",
               accessor: "Name"
-            },
-            {
-              Header: "Age",
-              accessor: "Age"
-            },
-            {
-              Header: "Genre",
-              accessor: "Genre"
             }
             
           ];
@@ -35,12 +26,12 @@ class SurveysPage extends Component {
        
             return (
                 <React.Fragment>
-                <ListPage columns={this.columns} fetchData={this.props.teamsFetchData} 
+                <ListPage columns={this.columns} fetchData={this.props.surveysFetchData} 
                 x_pagination={this.props.x_pagination} data={this.props.data}
                 isLoading={this.props.isLoading}
                 hasErrored={this.props.hasErrored}
                 errorMessage={this.props.errorMessage}
-                teamDeleteCollection={this.props.teamDeleteCollection}
+                teamDeleteCollection={this.props.surveyDeleteCollection}
                 />
 
                
@@ -67,6 +58,6 @@ const mapStateToProps = (state) => {
 
 
 export default connect(mapStateToProps,
-    { teamsFetchData, teamDelete, teamDeleteCollection })(SurveysPage)
+    { surveysFetchData, surveyDelete, surveyDeleteCollection })(SurveysPage)
 
 

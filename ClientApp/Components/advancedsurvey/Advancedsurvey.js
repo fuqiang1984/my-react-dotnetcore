@@ -274,11 +274,11 @@ class Advancedsurvey extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    survey: state.survey.data,
+    survey: state.surveyReducer.data,
     surveyReult: state.advancedsurvey.data,       // to match this.props.speakers:reducers.state.speakers.data
-    hasErrored: state.survey.hasErrored,
-    isLoading: state.survey.isLoading,
-    errorMessage: state.survey.errorMessage,
+    hasErrored: state.surveyReducer.hasErrored,
+    isLoading: state.surveyReducer.isLoading,
+    errorMessage: state.surveyReducer.errorMessage,
     submitted: state.advancedsurvey.submitted
   };
 };
