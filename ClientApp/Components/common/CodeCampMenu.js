@@ -42,6 +42,10 @@ export default function CodeCampMenu() {
                 </li>
 
                 <li>
+                    <Link to="/surveyspage">Surveys</Link>
+                </li>
+
+                <li>
                     <Link to="/speakers">Speakers</Link>
                 </li>
                 <li>

@@ -50,9 +50,9 @@ SurveysPage.defaultProps = {};
 const mapStateToProps = (state) => {
 
     return {
-        data: state.teamsReducer.data,       // to match this.props.speakers:reducers.state.speakers.data
-        isLoading: state.teamsReducer.isLoading,
-        x_pagination: state.teamsReducer.x_pagination
+        data: state.surveyReducer.data,       // to match this.props.speakers:reducers.state.speakers.data
+        isLoading: state.surveyReducer.isLoading,
+        x_pagination: state.surveyReducer.x_pagination
     };
 };
 

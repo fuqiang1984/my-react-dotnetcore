@@ -13,7 +13,7 @@ export function surveyFetchData() {
 
 export function surveysFetchData(params) {
     return {
-        type: types.TEAMS_LOAD,
+        type: types.SURVEY_LOAD,
         payload: {
             request: {
                

@@ -15,8 +15,11 @@ export function surveyReducer(state = {
             });
         }
         case types.SURVEY_LOAD_SUCCESS: {
+
             return Object.assign({}, state, {
-                data: action.payload.data,
+                data: action.payload.data.value,
+                links:action.payload.data.links,
+                x_pagination: JSON.parse(action.payload.headers["x-pagination"]),
                 isLoading: false,
                 hasErrored: false
             });
