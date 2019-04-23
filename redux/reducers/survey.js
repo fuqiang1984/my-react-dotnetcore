@@ -1,4 +1,4 @@
-import {SURVEY_LOAD, SURVEY_LOAD_FAIL, SURVEY_LOAD_SUCCESS} from "../actions/survey";
+import * as types from '../actions/actionTypes';
 
 export function survey(state = {
       isLoading: true,
@@ -8,13 +8,13 @@ export function survey(state = {
     }, action) {
     switch (action.type) {
 
-        case SURVEY_LOAD: {
+        case types.SURVEY_LOAD: {
             return Object.assign({}, state, {
                 isLoading: true,
                 hasErrored: false
             });
         }
-        case SURVEY_LOAD_SUCCESS: {
+        case types.SURVEY_LOAD_SUCCESS: {
             return Object.assign({}, state, {
                 data: action.payload.data,
                 isLoading: false,
@@ -22,7 +22,7 @@ export function survey(state = {
             });
         }
 
-        case SURVEY_LOAD_FAIL: {
+        case types.SURVEY_LOAD_FAIL: {
             return Object.assign({}, state, {
                 isLoading: false,
                 hasErrored: true,

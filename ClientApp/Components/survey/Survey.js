@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Quiz from './Quiz';
 import Result from './Result';
 import { connect } from 'react-redux';
-import { surveyFetchData } from ".././../../redux/actions/survey";
+import { surveyFetchData } from ".././../../redux/actions/surveyActions";
 
 
 

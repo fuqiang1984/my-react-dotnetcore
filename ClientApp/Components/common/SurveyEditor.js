@@ -38,7 +38,8 @@ class SurveyEditor extends Component {
   }
   saveMySurvey = () => {
     //console.log(JSON.stringify(this.editor.text));
-    this.props.saveMySurvey(this.editor.text);
+    console.log(this.editor);
+    this.props.saveMySurvey(JSON.stringify(this.editor.text));
   };
 }
 

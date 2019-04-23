@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 export default function PageTop(props) {
-  if (window.location.pathname === '/advancedsurvey') return null;
+ // if (window.location.pathname === '/advancedsurvey') return null;
   return (
     <div>
       <header className="header">
