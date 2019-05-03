@@ -1,9 +1,10 @@
 import React from 'react';
+import MultipleInput from '../common/MultipleInput';
 
 export default function Mytest() {
   return (
       <div>
-         <h2>Hello, my name is John! How are you today?</h2>
+         <MultipleInput />
       </div>
   );
 }

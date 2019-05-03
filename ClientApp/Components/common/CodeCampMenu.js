@@ -76,7 +76,7 @@ export default function CodeCampMenu() {
             </ul>
         </div>
         <div>
-        <ul className="nav nav-tabs">
+        {/*<ul className="nav nav-tabs">
   <li className="nav-item">
     <a className="nav-link active" href="#"> <Link to="/teams">Teams</Link></a>
   </li>
@@ -96,7 +96,7 @@ export default function CodeCampMenu() {
   <li className="nav-item">
     <a className="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
   </li>
-</ul>
+    </ul>*/}
 </div>
         </div>
     );
