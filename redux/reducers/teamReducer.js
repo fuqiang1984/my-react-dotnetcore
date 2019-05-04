@@ -6,7 +6,8 @@ export function teamReducer(state = {
     saving: false,
     hasErrored: false,
     errors: "",
-    success: false
+    success: false,
+    rvalue:'caonima'
 }, action) {
     switch (action.type) {
 
@@ -20,7 +21,8 @@ export function teamReducer(state = {
             return Object.assign({}, state, {           
                 saving: false,
                 team: action.payload.data,
-                success:true
+                success:true,
+                rvalue:'I love you'
             });
             
         }

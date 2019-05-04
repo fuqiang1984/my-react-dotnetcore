@@ -35,6 +35,7 @@ class TeamsPage extends Component {
        
             return (
                 <React.Fragment>
+                  <h1>{this.props.randomvalue}</h1>
                 <ListPage columns={this.columns} fetchData={this.props.teamsFetchData} 
                 x_pagination={this.props.x_pagination} data={this.props.data}
                 isLoading={this.props.isLoading}
@@ -61,7 +62,8 @@ const mapStateToProps = (state) => {
     return {
         data: state.teamsReducer.data,       // to match this.props.speakers:reducers.state.speakers.data
         isLoading: state.teamsReducer.isLoading,
-        x_pagination: state.teamsReducer.x_pagination
+        x_pagination: state.teamsReducer.x_pagination,
+        randomvalue:state.teamReducer.rvalue
     };
 };
 

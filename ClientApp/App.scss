@@ -10,12 +10,13 @@
 // ==========================
 
 // Import all from Bootstrap
-// @import 'bootstrap/scss/bootstrap';
+ @import 'bootstrap/scss/bootstrap';
 
 // ...or just chosen parts of Bootstrap
 // it is better to remove unused parts
 
 // Core variables and mixins
+/*
 @import 'bootstrap/scss/variables';
 @import 'bootstrap/scss/mixins';
 @import 'bootstrap/scss/custom';
@@ -67,12 +68,13 @@
 
 // Utility classes
 @import 'bootstrap/scss/utilities';
-
+*/
 // ==========================
 // Custom imports
 // ==========================
 
 // Global custom styles
+/*
 @import 'global-styles';
 
 // Components
@@ -131,3 +133,5 @@
 @import 'pages/events';
 
 @import 'utilities/color';
+
+*/

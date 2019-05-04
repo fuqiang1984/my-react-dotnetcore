@@ -53,7 +53,7 @@
     "path": "^0.12.7",
     "prop-types": "^15.7.2",
     "react": "^16.8.1",
-    "react-dom": "^16.8.1",
+    "react-dom": "^16.8.4",
     "react-paginate": "^6.3.0",
     "react-redux": "^6.0.0",
     "react-router": "^4.3.1",
@@ -72,6 +72,6 @@
     "webpack-node-externals": "^1.7.2",
     "surveyjs-editor": "latest",
     "surveyjs-widgets": "latest",
-    "bootstrap": "4.0.0-alpha.6"
+    "bootstrap": "4.3.1"
   }
 }
