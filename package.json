@@ -25,6 +25,8 @@
   "license": "ISC",
   "devDependencies": {
     "css-loader": "^2.1.0",
+    "file-loader": "^3.0.1",
+    "url-loader": "^1.1.2",
     "webpack": "^4.29.3",
     "webpack-cli": "^3.2.3",
     "webpack-dev-server": "^3.1.14"
@@ -38,6 +40,7 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
+    "bootstrap": "4.3.1",
     "cpx": "^1.5.0",
     "dotenv": "^6.2.0",
     "dotenv-webpack": "^1.7.0",
@@ -54,6 +57,7 @@
     "prop-types": "^15.7.2",
     "react": "^16.8.1",
     "react-dom": "^16.8.4",
+    "react-icons": "^3.5.0",
     "react-paginate": "^6.3.0",
     "react-redux": "^6.0.0",
     "react-router": "^4.3.1",
@@ -61,6 +65,7 @@
     "react-router-redux": "^4.0.8",
     "react-table": "^6.9.2",
     "react-transition-group": "^2.5.3",
+    "reactstrap": "^7.1.0",
     "redux": "^4.0.1",
     "redux-axios-middleware": "^4.0.0",
     "redux-devtools-extension": "^2.13.8",
@@ -68,11 +73,9 @@
     "redux-thunk": "^2.3.0",
     "rimraf": "^2.6.3",
     "survey-react": "^1.0.71",
-    "webpack-merge": "^4.2.1",
-    "webpack-node-externals": "^1.7.2",
     "surveyjs-editor": "latest",
     "surveyjs-widgets": "latest",
-    "bootstrap": "4.3.1",
-    "react-icons": "^3.5.0"
+    "webpack-merge": "^4.2.1",
+    "webpack-node-externals": "^1.7.2"
   }
 }
