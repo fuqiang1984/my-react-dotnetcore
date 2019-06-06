@@ -7,7 +7,7 @@ export default function InputItem({ step, date, idx }) {
     let dateId = `date-${idx}`;
     return (
         <div>
-           { /*
+           
             <div class="form-group-inline">
                 <label>Step:</label>
                 <input class="form-control-inline" name="step"
@@ -18,8 +18,8 @@ export default function InputItem({ step, date, idx }) {
                     placeholder="Enter your date" />
 
             </div>
-            */
-           }
+            
+          { /*
             <div class="form-inline">
                 <div class="form-group col-md-4">
                     <label for="inputEmail4">Email</label>
@@ -30,6 +30,8 @@ export default function InputItem({ step, date, idx }) {
                     <input type="password" class="form-control" id="inputPassword4" placeholder="Password" />
                 </div>
             </div>
+            */
+          }
         </div>
     );
 

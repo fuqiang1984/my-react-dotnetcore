@@ -34,7 +34,8 @@ export default class MultipleInput extends Component {
 
     handleSubmit=(event)=>{
         event.preventDefault();
-        this.props.handleSubmit(this.props.steps);
+        console.log(this.state.steps);
+        //this.props.handleSubmit(this.props.steps);
     }
 
     render() {
@@ -42,9 +43,10 @@ export default class MultipleInput extends Component {
             <React.Fragment>
                 <form onSubmit={this.handleSubmit} onChange={this.handleChange}>
                 {this.state.steps.
-                    map((s,idx) => <InputItem idx={idx} step={s.step} date={s.date} />)}
+                    map((s,idx) => <InputItem key={idx} idx={idx} step={s.step} date={s.date} />)}
 
-                <button type="submit" class="btn btn-primary" onClick={this.Addmore}>Add another</button>
+                <button  class="btn btn-primary" onClick={this.Addmore}>Add another</button>
+                <button type="submit" class="btn btn-primary" onClick={this.handleSubmit}>Submit</button>
                 </form>
             </React.Fragment>
 

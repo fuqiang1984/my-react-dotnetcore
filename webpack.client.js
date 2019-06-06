@@ -9,7 +9,7 @@ const baseConfig = require('./webpack.base.js');
 const Dotenv = require('dotenv-webpack');
 
 const config = {
-
+    devtool: 'eval-source-map',
     entry: APP_DIR + '/Client.js',
     devServer:{
         contentBase: PUBLIC_DIR,
