@@ -219,7 +219,7 @@ class Advancedsurvey extends Component {
 
   componentDidMount() {
 
-    this.props.surveyFetchData();
+    //this.props.surveyFetchData();
 
 
   }
@@ -235,26 +235,20 @@ class Advancedsurvey extends Component {
   render() {
     //console.log(this.props.survey.JSONDefinition);
 
-    if (this.props.submitted) {
-      console.log(this.props.surveyReult.JSONResult);
-      let jsonObject = JSON.parse(this.props.surveyReult.JSONResult);
-      debugger;
-      return (<div><SurveyResult surveyResults={jsonObject} /></div>);
+    //if (this.props.submitted) {
+      //console.log(this.props.surveyReult.JSONResult);
+      //let jsonObject = JSON.parse(this.props.surveyReult.JSONResult);
+      //debugger;
+      //return (<div><SurveyResult surveyResults={this.json} /></div>);
       // return (<div>{JSON.stringify(this.props.surveyReult)}</div>);
-    }
+    //}
 
 
     //debugger;
 
-    if (this.props.isLoading) {
-      return <span><i>Loading...</i></span>
-    }
-    else if (this.props.hasErrored) {
-      return <span><b>Failed to load data: {this.props.errorMessage}</b></span>
-    } else {
-      console.log(this.props.survey.JSONDefinition);
+    
 
-      var model = new Survey.Model(JSON.parse(this.props.survey.JSONDefinition));
+      var model = new Survey.Model(this.json);
 
       return (<Survey.Survey model={model} onComplete={(survey, options) => {
         console.log("Survey results: " + JSON.stringify(survey.data));
@@ -263,11 +257,11 @@ class Advancedsurvey extends Component {
           JSONResult: JSON.stringify(survey.data)
         }
 
-        this.props.updateAdvancedsurvey(surveyresult);
+       // this.props.updateAdvancedsurvey(surveyresult);
 
       }} />);
 
-    }
+    
 
   }
 }

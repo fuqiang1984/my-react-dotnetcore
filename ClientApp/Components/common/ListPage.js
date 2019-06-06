@@ -5,7 +5,6 @@ import Pagination from './Pagination';
 import SearchBar from './SearchBar';
 import DataList from './DataList'
 
-import arrayRemove from '../utils/Helper';
 
 
 class ListPage extends Component {
@@ -39,7 +38,7 @@ class ListPage extends Component {
     componentDidMount() {
         let pageNumber = this.props.x_pagination == null ? 1 : this.props.x_pagination.currentPage > 0 ? this.props.x_pagination.currentPage : 1;
         let teamsResourceParameters = { PageNumber: pageNumber, searchQuery: this.state.searchText };
-        this.props.fetchData(teamsResourceParameters);
+        this.props.onFetchData(teamsResourceParameters);
     }
 
 
@@ -47,7 +46,7 @@ class ListPage extends Component {
     onRangeClick = (event) => {
         const field = event.target.text;
         let teamsResourceParameters = { PageNumber: field, searchQuery: this.state.searchText };
-        this.props.fetchData(teamsResourceParameters);
+        this.props.onFetchData(teamsResourceParameters);
 
     }
 
@@ -55,7 +54,7 @@ class ListPage extends Component {
     GoPrev = () => {
         event.preventDefault();
         let teamsResourceParameters = { PageNumber: this.props.x_pagination.currentPage - 1, searchQuery: this.state.searchText };
-        this.props.fetchData(teamsResourceParameters);
+        this.props.onFetchData(teamsResourceParameters);
 
 
     }
@@ -64,7 +63,7 @@ class ListPage extends Component {
     GoNext = (link) => {
         event.preventDefault();
         let teamsResourceParameters = { PageNumber: this.props.x_pagination.currentPage + 1, searchQuery: this.state.searchText };
-        this.props.fetchData(teamsResourceParameters);
+        this.props.onFetchData(teamsResourceParameters);
 
     }
 
@@ -108,7 +107,7 @@ class ListPage extends Component {
 
         this.props.teamDeleteCollection(Object.keys(this.state.selected).filter(k=>this.state.selected[k]===true)).then(() => {
             this.checkedData = [];
-            this.props.fetchData(teamsResourceParameters);
+            this.props.onFetchData(teamsResourceParameters);
 
 
         }).then(() => this.setState({ hasChecked: false }))
@@ -131,7 +130,7 @@ class ListPage extends Component {
 
     Search = (event) => {
         let teamsResourceParameters = { PageNumber: 1, searchQuery: this.state.searchText };
-        this.props.fetchData(teamsResourceParameters);
+        this.props.onFetchData(teamsResourceParameters);
     }
 
     render() {

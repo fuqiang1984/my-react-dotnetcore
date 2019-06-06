@@ -13,6 +13,7 @@ const store = configureStore(window.__STATE__);
 ReactDOM.render(
 	<Provider store={store}>
     <Router history={browserHistory}>
+<<<<<<< HEAD
            <Switch>
                 <LayoutRoute
                 exact
@@ -24,5 +25,10 @@ ReactDOM.render(
                 
             
     </Router></Provider>,
+=======
+        <FullPage/>
+    </Router>
+    </Provider>,
+>>>>>>> ebfeda132414fe728b5b02f44cd4c6dae0b90403
     document.getElementById("app")
 );
