@@ -13,6 +13,7 @@ ReactDOM.render(
 	<Provider store={store}>
     <Router history={browserHistory}>
         <FullPage/>
-    </Router></Provider>,
+    </Router>
+    </Provider>,
     document.getElementById("app")
 );

@@ -29,14 +29,21 @@ class TeamsPage extends Component {
             }
             
           ];
+        this.handleFetchData=this.handleFetchData.bind(this);
     }  
+
+    handleFetchData(teamsResourceParameters){
+      this.props.teamsFetchData(teamsResourceParameters);
+    }
 
     render() {
        
             return (
                 <React.Fragment>
-                <ListPage columns={this.columns} fetchData={this.props.teamsFetchData} 
-                x_pagination={this.props.x_pagination} data={this.props.data}
+                <ListPage columns={this.columns} 
+                onFetchData={this.handleFetchData} 
+                x_pagination={this.props.x_pagination} 
+                data={this.props.data}
                 isLoading={this.props.isLoading}
                 hasErrored={this.props.hasErrored}
                 errorMessage={this.props.errorMessage}

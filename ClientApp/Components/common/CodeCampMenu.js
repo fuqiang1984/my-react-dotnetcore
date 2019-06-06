@@ -33,23 +33,14 @@ export default function CodeCampMenu() {
                 </li>
 
                 <li>
-                    <Link to="/survey">Survey</Link>
-                </li>
-
-                <li>
                     <Link to="/advancedsurvey">Advanced Survey</Link>
                 </li>
                 <li>
                     <Link to="/surveycreator">Create Survey</Link>
                 </li>
 
-                <li>
-                    <Link to="/surveyspage">Surveys</Link>
-                </li>
+               
 
-                <li>
-                    <Link to="/speakers">Speakers</Link>
-                </li>
                 <li>
                     <Link to="/teams">Teams</Link>
                 </li>
